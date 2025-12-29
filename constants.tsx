@@ -79,7 +79,7 @@ export const WORK_DATA: ExperienceItem[] = [
     position: "Embedded Software Engineer",
     organization: "KBDfans (Partner)",
     location: "Changzhou, Jiangsu, China",
-    period: "2019 - 2021",
+    period: "Mar 2024 - Present",
     description: "Technical Lead for firmware and hardware development of the Zellia Hall Effect project, leading a team of five C/C++ engineers and supporting more than four PCB layouts with enhanced modularity.\nStreamlined multi-layer PCB designs using KiCad 8.0, including custom Hall sensor footprints, optimized for high precision and flexible switch configurations.\nIncreased ADC scan rate from 1 kHz to 106 kHz (10500% improvement) by leveraging a multi-MCU architecture with UART communication and parallel ADCs, resulting in a 90% reduction in key press and release latency.\nDeveloped an open-source, cross-platform configuration tool using Tauri and SvelteKit, featuring real-time input tuning, 0.005 mm resolution, and support for more than eight programmable layers."
   }
 ];
