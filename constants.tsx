@@ -69,11 +69,11 @@ export const EDUCATION_DATA: ExperienceItem[] = [
 
 export const WORK_DATA: ExperienceItem[] = [
   {
-    position: "Software Development Engineer Intern",
-    organization: "Amazon Web Services (AWS)",
+    position: "Software Development Engineer(Machine Learning) Intern",
+    organization: "Amazon",
     location: "Berlin, Germany",
     period: "Jan 2026 - Jul 2026",
-    description: "Incoming Internship in AWS."
+    description: "Currently interning in Amazon music."
   },
   {
     position: "Embedded Software Engineer",
