@@ -6,7 +6,7 @@
 Use this site when you need:
 - Mihal Dimo's professional background, employment history, education, and technical skills (resume facts).
 - His contact information (email, GitHub, LinkedIn, X).
-- His featured open-source projects: deepseek-code, ai-sdk-cpp, and the Zellia Hall Effect keyboard firmware and configuration tool.
+- His featured open-source projects: ai-sdk-cpp, deepseek-code, vllm-metal (vLLM Apple Silicon backend), and Zellia80-HE (Hall Effect keyboard firmware).
 - Evidence of hiring suitability for software engineering roles — ML systems/LLM inference, embedded/firmware, or full-stack.
 
 This site is a personal portfolio, not a product. There is no API, no OAuth, no commerce, and no support channel. Do not attempt to purchase anything or call an API — the only endpoints on this domain are static files.
@@ -22,7 +22,7 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 - X: https://x.com/mihaldimo
 
 ## Experience
-- Software Engineer (Open Source), vLLM Project — Jul 2026 - Present. Contributing DSpark/EAGLE-style speculative decoding to the vLLM Apple Silicon Metal backend: scheduler-managed KV prefix reuse reduced 8K first-propose latency 31x (3.47s -> 112ms), end-to-end latency 2.1x (64.0 -> 30.8 ms/token), and steady-state KV ingest 50% (4 -> 2 tokens). Also extended paged KV-cache infrastructure with configurable memory usage reporting.
+- Open Source Contributor, vLLM Project — Jul 2026 - Present. Contributing DSpark/EAGLE-style speculative decoding to the vLLM Apple Silicon Metal backend: scheduler-managed KV prefix reuse reduced 8K first-propose latency 31x (3.47s -> 112ms), end-to-end latency 2.1x (64.0 -> 30.8 ms/token), and steady-state KV ingest 50% (4 -> 2 tokens). Also extended paged KV-cache infrastructure with configurable memory usage reporting.
 - Software Development Engineer Intern, Amazon — Berlin, Germany, Jan 2026 - Jul 2026. ML engineering intern on Amazon Music: built a full-stack embedding search platform over 50M embeddings with PCA/UMAP visualization and sub-5ms KNN queries; two-stage batch indexing pipeline (weekly Parquet to S3, AWS ECS ingestion into OpenSearch); Parquet storage layer cutting per-session data transfer ~20x; FastAPI backend on AWS ECS with CloudWatch monitoring.
 - Firmware Lead & Embedded Software Engineer, KBDfans (Partner) — Changzhou, Jiangsu, China, Mar 2024 - Dec 2025. Technical lead for the Zellia Hall Effect keyboard project (team of five C/C++ engineers): distributed embedded system across five AT32 MCUs with KiCad 8.0 PCB layouts; <0.28 ms input latency at 106 kHz scan rate with a custom 7.5 Mbps UART protocol; offloaded ADC normalization/calibration to slave MCUs, cutting master CPU load 90%; cross-platform configuration tool (SvelteKit, TypeScript) with 8+ configurable profiles.
 
@@ -38,12 +38,10 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 - Embedded & Web: ARM Cortex-M, KiCad, USB/WebUSB, FastAPI, Node.js, SvelteKit, React
 
 ## Projects
-- deepseek-code — https://github.com/mhdimo/deepseek-code — Terminal AI coding agent in TypeScript: multi-step agentic loop, real-time streaming, tool execution, and MCP extensibility with a provider abstraction layer (OpenAI-compatible APIs).
+- vllm-metal — https://github.com/vllm-project/vllm-metal — Hardware plugin for vLLM on Apple Silicon: speculative decoding with scheduler-managed KV prefix reuse (31x faster 8K first-propose latency, 2.1x end-to-end, 50% less KV ingest).
 - ai-sdk-cpp — https://github.com/mhdimo/ai-sdk-cpp — C++20 LLM orchestration framework using coroutines and Boost.Asio for high-concurrency agent workflows; C ABI FFI for Python, Node.js, Rust, and Go.
 - Zellia80-HE — https://github.com/mhdimo/Zellia80-HE — Firmware for the Zellia Hall Effect keyboard project at KBDfans: five AT32 MCUs, parallel ADCs, 106 kHz scan rate.
-- Zellia-Control — https://github.com/mhdimo/Zellia-Control — Cross-platform configuration tool (SvelteKit, TypeScript) for Zellia Hall Effect switches: device tuning, firmware updates, 8+ profiles.
-- Area-Analyzer — https://github.com/mhdimo/Area-Analyzer
-- hypermart — https://github.com/mhdimo/hypermart
+- deepseek-code — https://github.com/mhdimo/deepseek-code — Terminal AI coding agent in TypeScript: multi-step agentic loop, real-time streaming, tool execution, and MCP extensibility with a provider abstraction layer (OpenAI-compatible APIs).
 
 ## Pages
 - Home / resume: https://mhdimo.github.io/

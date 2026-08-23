@@ -9,16 +9,12 @@ export const CONTACT_INFO = {
   location: 'Berlin, Germany',
 };
 
-// Add the repository names you want to feature (in order)
+// Featured repositories (full name: owner/repo), in display order.
 export const FEATURED_REPOS = [
-  'deepseek-code',
-  'ai-sdk-cpp',
-  'Zellia80-HE',
-  'Zellia-Control',
-  'Area-Analyzer',
-  'hypermart',
-
-  // Add more repo names here
+  'mhdimo/ai-sdk-cpp',
+  'mhdimo/deepseek-code',
+  'vllm-project/vllm-metal',
+  'mhdimo/Zellia80-HE',
 ];
 
 // Static fallback data so project cards exist in the server-rendered HTML
@@ -27,15 +23,6 @@ export const FEATURED_REPOS = [
 export const REPO_FALLBACKS: GithubRepo[] = [
   {
     id: 0,
-    name: 'deepseek-code',
-    description: 'Terminal AI coding agent in TypeScript — multi-step agentic loop, real-time streaming, tool execution, and MCP extensibility with a provider abstraction layer.',
-    html_url: `https://github.com/${GITHUB_USERNAME}/deepseek-code`,
-    stargazers_count: 5,
-    language: 'TypeScript',
-    updated_at: '',
-  },
-  {
-    id: 1,
     name: 'ai-sdk-cpp',
     description: 'C++20 LLM orchestration framework using coroutines and Boost.Asio — high-concurrency agent workflows with a C ABI FFI for Python, Node.js, Rust, and Go.',
     html_url: `https://github.com/${GITHUB_USERNAME}/ai-sdk-cpp`,
@@ -44,21 +31,30 @@ export const REPO_FALLBACKS: GithubRepo[] = [
     updated_at: '',
   },
   {
+    id: 1,
+    name: 'deepseek-code',
+    description: 'Terminal AI coding agent in TypeScript — multi-step agentic loop, real-time streaming, tool execution, and MCP extensibility with a provider abstraction layer.',
+    html_url: `https://github.com/${GITHUB_USERNAME}/deepseek-code`,
+    stargazers_count: 5,
+    language: 'TypeScript',
+    updated_at: '',
+  },
+  {
     id: 2,
-    name: 'Zellia80-HE',
-    description: 'Firmware for the Zellia Hall Effect keyboard project at KBDfans — technical lead for firmware and hardware development, five AT32 MCUs with parallel ADCs at 106 kHz scan rate.',
-    html_url: `https://github.com/${GITHUB_USERNAME}/Zellia80-HE`,
-    stargazers_count: 0,
-    language: 'C',
+    name: 'vllm-metal',
+    description: 'Hardware plugin for vLLM on Apple Silicon — speculative decoding with scheduler-managed KV prefix reuse: 31× faster 8K first-propose latency, 2.1× end-to-end, 50% less KV ingest.',
+    html_url: 'https://github.com/vllm-project/vllm-metal',
+    stargazers_count: 1631,
+    language: 'Python',
     updated_at: '',
   },
   {
     id: 3,
-    name: 'Zellia-Control',
-    description: 'Cross-platform configuration tool for Zellia Hall Effect switches built with SvelteKit and TypeScript — device tuning, firmware updates, and profile management with 8+ profiles.',
-    html_url: `https://github.com/${GITHUB_USERNAME}/Zellia-Control`,
-    stargazers_count: 0,
-    language: 'TypeScript',
+    name: 'Zellia80-HE',
+    description: 'Firmware for the Zellia Hall Effect keyboard project at KBDfans — technical lead for firmware and hardware development, five AT32 MCUs with parallel ADCs at 106 kHz scan rate.',
+    html_url: `https://github.com/${GITHUB_USERNAME}/Zellia80-HE`,
+    stargazers_count: 24,
+    language: 'C',
     updated_at: '',
   },
 ];
@@ -112,25 +108,34 @@ export const EDUCATION_DATA: ExperienceItem[] = [
 
 export const WORK_DATA: ExperienceItem[] = [
   {
-    position: "Software Engineer (Open Source)",
+    position: "Open Source Contributor",
     organization: "vLLM Project",
     location: "Open Source",
     period: "Jul 2026 - Present",
-    description: "Contributing DSpark/EAGLE-style speculative decoding to the vLLM Apple Silicon Metal backend.\nOptimized speculative decoding with scheduler-managed KV prefix reuse, eliminating redundant KV re-ingestion: 31× faster 8K first-propose latency (3.47s → 112ms), 2.1× end-to-end latency (64.0 → 30.8 ms/token), and 50% less steady-state KV ingest.\nExtended the paged KV-cache infrastructure with configurable memory usage reporting for long-context inference workloads."
+    description: "Contributing DSpark/EAGLE-style speculative decoding to the vLLM Apple Silicon Metal backend.\nOptimized speculative decoding with scheduler-managed KV prefix reuse, eliminating redundant KV re-ingestion: 31× faster 8K first-propose latency (3.47s → 112ms), 2.1× end-to-end latency (64.0 → 30.8 ms/token), and 50% less steady-state KV ingest.\nExtended the paged KV-cache infrastructure with configurable memory usage reporting for long-context inference workloads.",
+    logo: 'https://avatars.githubusercontent.com/u/136984999?v=4',
+    logoTile: 'white',
+    accent: ['#4f6ef2', '#a855f7'],
   },
   {
     position: "Software Development Engineer Intern",
     organization: "Amazon",
     location: "Berlin, Germany",
     period: "Jan 2026 - Jul 2026",
-    description: "Engineered a full-stack embedding search platform over 50M embeddings with PCA/UMAP visualization and sub-5ms K-Nearest-Neighbours queries, enabling faster Music recommender experimentation.\nDesigned a two-stage batch indexing pipeline: a weekly job performs metadata hydration and writes partitioned Parquet files to S3, followed by an AWS ECS ingestion task that indexes entities into OpenSearch.\nImplemented a Parquet-based storage layer with entity-level partitioning, reducing per-session data transfer ~20×.\nBuilt a FastAPI backend on AWS ECS unifying search, ingestion status, and visualization workflows, with CloudWatch monitoring for pipeline reliability."
+    description: "Engineered a full-stack embedding search platform over 50M embeddings with PCA/UMAP visualization and sub-5ms K-Nearest-Neighbours queries, enabling faster Music recommender experimentation.\nDesigned a two-stage batch indexing pipeline: a weekly job performs metadata hydration and writes partitioned Parquet files to S3, followed by an AWS ECS ingestion task that indexes entities into OpenSearch.\nImplemented a Parquet-based storage layer with entity-level partitioning, reducing per-session data transfer ~20×.\nBuilt a FastAPI backend on AWS ECS unifying search, ingestion status, and visualization workflows, with CloudWatch monitoring for pipeline reliability.",
+    logo: '/images/amazon-logo.jpg',
+    logoTile: 'white',
+    accent: ['#ff9900', '#232f3e'],
   },
   {
     position: "Firmware Lead & Embedded Software Engineer",
     organization: "KBDfans (Partner)",
     location: "Changzhou, Jiangsu, China",
     period: "Mar 2024 - Dec 2025",
-    description: "Led firmware and hardware development for the Zellia Hall Effect project (team of five C/C++ engineers): a distributed embedded system across five AT32 MCUs with enhanced modularity and multi-layout keyboard, designed in KiCad 8.0.\nAchieved <0.28 ms input latency at a 106 kHz scan rate by decoupling signal acquisition and processing, with a custom 7.5 Mbps UART protocol for multi-MCU synchronization.\nOffloaded ADC normalization and calibration to slave MCUs, cutting master CPU load by 90%.\nDeveloped a cross-platform configuration tool (SvelteKit, TypeScript) for device tuning, firmware updates, and profile management with 8+ configurable profiles."
+    description: "Led firmware and hardware development for the Zellia Hall Effect project (team of five C/C++ engineers): a distributed embedded system across five AT32 MCUs with enhanced modularity and multi-layout keyboard, designed in KiCad 8.0.\nAchieved <0.28 ms input latency at a 106 kHz scan rate by decoupling signal acquisition and processing, with a custom 7.5 Mbps UART protocol for multi-MCU synchronization.\nOffloaded ADC normalization and calibration to slave MCUs, cutting master CPU load by 90%.\nDeveloped a cross-platform configuration tool (SvelteKit, TypeScript) for device tuning, firmware updates, and profile management with 8+ configurable profiles.",
+    logo: '/images/kbdfans-logo.png',
+    logoTile: 'black',
+    accent: ['#ff4d4d', '#7f1d1d'],
   }
 ];
 

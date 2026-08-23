@@ -59,7 +59,7 @@ const App: React.FC = () => {
 
             {/* Footer */}
             <footer className="pt-24 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 opacity-40 text-xs font-bold uppercase tracking-[0.4em]">
-              <p>© 2026 Mihal Dimo</p>
+              <p className="whitespace-nowrap">© 2026 Mihal Dimo</p>
               <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
                 <a href="/about/" className="hover:opacity-100 transition-opacity">About</a>
                 <a href="/contact/" className="hover:opacity-100 transition-opacity">Contact</a>
