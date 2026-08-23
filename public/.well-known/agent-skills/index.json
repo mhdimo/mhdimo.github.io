@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "mihal-dimo",
+      "type": "skill-md",
+      "description": "Research Mihal Dimo — software engineer working across AI systems and embedded hardware. Use when asked about Mihal Dimo's background, work history, projects, skills, education, or contact information.",
+      "url": "https://mhdimo.github.io/.well-known/agent-skills/mihal-dimo/SKILL.md",
+      "digest": "sha256:c5b72f080776dc081d3297609cb0ab38ce942b4ecc487d5fdb605f4a078dd494"
+    }
+  ]
+}

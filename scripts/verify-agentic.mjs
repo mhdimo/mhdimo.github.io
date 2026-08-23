@@ -10,6 +10,7 @@
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const DIST = resolve(import.meta.dirname, '../dist');
 const failures = [];
@@ -70,6 +71,18 @@ check('WebSite present with publisher', !!website?.url && !!website?.publisher);
 const llms = read('llms.txt');
 check('llms.txt exists', llms.length > 0);
 check('llms.txt has when-to-use guidance', /when to use/i.test(llms), 'section present');
+check('llms.txt links to llms-full.txt', llms.includes('llms-full.txt'), 'full-content variant discoverable');
+
+// --- llms-full.txt (llmstxt.org full-content variant) ---
+const llmsFull = read('llms-full.txt');
+check('llms-full.txt exists with full content', llmsFull.length >= 800, `chars=${llmsFull.length}`);
+check('llms-full.txt has experience + education + projects', /## Experience/.test(llmsFull) && /## Education/.test(llmsFull) && /## Projects/.test(llmsFull));
+
+// --- user requirement: no phone number anywhere in agent-facing content ---
+// Guard against the number itself and machine-readable phone fields, not the
+// word "phone" (the site intentionally states "no phone number is published").
+const noPhoneSources = [html, llms, llmsFull, notFound, read('contact/index.html'), read('about/index.html')];
+check('no phone number / tel link / telephone field', !noPhoneSources.some(s => /tel:\+?[0-9]|"telephone"\s*:|"phoneNumber"\s*:|\b\+[0-9]{7,}/i.test(s)), 'privacy requirement');
 
 // --- sitemap (recommended) ---
 const sitemap = read('sitemap.xml');
@@ -90,6 +103,23 @@ for (const page of ['about', 'contact', 'privacy']) {
   const p = read(`${page}/index.html`);
   check(`${page}/ has 500+ chars`, visibleText(p).length >= 500, `chars=${visibleText(p).length}`);
 }
+
+// --- well-known agent skill (agentskills.io discovery 0.2.0) ---
+const skillIndex = JSON.parse(read('.well-known/agent-skills/index.json'));
+check('agent-skills index uses discovery schema', skillIndex['$schema'] === 'https://schemas.agentskills.io/discovery/0.2.0/schema.json');
+const skill = skillIndex.skills?.[0];
+check('agent-skills index lists skill-md entry', skill?.name === 'mihal-dimo' && skill?.type === 'skill-md');
+check('agent-skills index URL is on this domain', skill?.url === 'https://mhdimo.github.io/.well-known/agent-skills/mihal-dimo/SKILL.md');
+const skillMd = read('.well-known/agent-skills/mihal-dimo/SKILL.md');
+const skillDigest = `sha256:${createHash('sha256').update(skillMd).digest('hex')}`;
+check('agent-skills digest matches SKILL.md', skillDigest === skill?.digest);
+check('SKILL.md has frontmatter + llms.txt guidance', skillMd.startsWith('---') && /^description:/m.test(skillMd) && skillMd.includes('/llms.txt'));
+
+// --- security.txt (RFC 9116) ---
+const security = read('.well-known/security.txt');
+check('security.txt has Contact + Expires', /^Contact: mailto:.+$/m.test(security) && /^Expires: 20\d{2}-/m.test(security), 'RFC 9116 fields');
+const expires = security.match(/^Expires: (.+)$/m)?.[1];
+check('security.txt expiry is in the future', !!expires && new Date(expires) > new Date());
 
 console.log('');
 if (failures.length > 0) {

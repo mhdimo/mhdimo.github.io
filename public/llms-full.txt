@@ -1,6 +1,6 @@
-# Mihal Dimo — Software Engineer, AI Systems & Embedded Hardware
+# Mihal Dimo — Software Engineer, AI Systems & Embedded Hardware (full content)
 
-> Mihal Dimo is a software engineer working across AI systems and embedded hardware — from speculative decoding in the vLLM Apple Silicon backend to Hall-effect keyboard firmware. Site: https://mhdimo.github.io
+> Full-content version of https://mhdimo.github.io. This file contains the complete text of every page on the site plus the canonical resume facts. Prefer /llms.txt for a shorter summary; use this file when you need full detail. Site: https://mhdimo.github.io
 
 ## When to use this site
 Use this site when you need:
@@ -45,10 +45,24 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 - Area-Analyzer — https://github.com/mhdimo/Area-Analyzer
 - hypermart — https://github.com/mhdimo/hypermart
 
-## Pages
-- Home / resume: https://mhdimo.github.io/
-- About: https://mhdimo.github.io/about/
-- Contact: https://mhdimo.github.io/contact/
-- Privacy: https://mhdimo.github.io/privacy/
-- Full content version of this file: https://mhdimo.github.io/llms-full.txt
-- Sitemap: https://mhdimo.github.io/sitemap.xml
+## Page contents
+
+### Home (https://mhdimo.github.io/)
+Personal site of Mihal Dimo, software engineer working across AI systems and embedded hardware. Hero: "Mihal Dimo — Software Engineer, Low-Latency & Embedded Systems". Sections: Technical Skills (Languages, ML Systems, LLM Tooling, Systems & Data, Embedded & Web), Projects (deepseek-code, ai-sdk-cpp, Zellia80-HE, Zellia-Control, Area-Analyzer, hypermart — GitHub data loaded live), Work Experience (vLLM Project, Amazon, KBDfans), Education (University of Catania, Brandenburg Technical University), and footer links to About, Contact, Privacy.
+
+### About (https://mhdimo.github.io/about/)
+Longer-form bio: working across AI systems and embedded hardware — from speculative decoding in the vLLM Apple Silicon backend to Hall-effect keyboard firmware. Open-source contributor to vLLM, ML engineering intern at Amazon Music, former firmware lead for the Zellia Hall Effect keyboard project at KBDfans. Based in Berlin, Germany.
+
+### Contact (https://mhdimo.github.io/contact/)
+Contact via email: mihal@kakao.com. Location: Berlin, Germany. No phone number is published. Other profiles: GitHub (github.com/mhdimo), LinkedIn (linkedin.com/in/mihaldimo/), X (x.com/mihaldimo).
+
+### Privacy (https://mhdimo.github.io/privacy/)
+The site runs no analytics, sets no cookies, and collects no personal data. Static hosting via GitHub Pages; server logs are handled by GitHub per their privacy policy. Contact: mihal@kakao.com.
+
+## Machine-readable files on this domain
+- https://mhdimo.github.io/llms.txt — summary version of this file
+- https://mhdimo.github.io/sitemap.xml — URL list of all pages
+- https://mhdimo.github.io/robots.txt — crawler rules
+- https://mhdimo.github.io/Resume.pdf — PDF resume (authoritative for employment dates)
+- https://mhdimo.github.io/.well-known/security.txt — security contact
+- https://mhdimo.github.io/.well-known/agent-skills/index.json — agent skill index (skill: mihal-dimo)
