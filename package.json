@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && bun scripts/prerender.tsx",
+    "test:agentic": "bun scripts/verify-agentic.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

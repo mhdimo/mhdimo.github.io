@@ -1,0 +1,99 @@
+/**
+ * Verify the machine-readable, agent-facing contract of the built site.
+ * Runs against dist/ after `bun run build`. Exits non-zero on any failure.
+ *
+ * Covers the checks the is-agentic.com audit performs on this site:
+ * content in raw HTML, agent-friendly 404, JSON-LD (Person/WebSite/
+ * Organization), llms.txt, sitemap, robots, metadata, trust anchors.
+ *
+ * Usage: bun scripts/verify-agentic.mjs  (or: bun run test:agentic)
+ */
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+const DIST = resolve(import.meta.dirname, '../dist');
+const failures = [];
+let checks = 0;
+
+function check(name, ok, detail) {
+  checks++;
+  const status = ok ? 'PASS' : 'FAIL';
+  console.log(`  ${status}  ${name}${detail ? ` — ${detail}` : ''}`);
+  if (!ok) failures.push(name);
+}
+
+function read(p) {
+  return readFileSync(resolve(DIST, p), 'utf-8');
+}
+
+function visibleText(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/g, ' ')
+    .replace(/<style[\s\S]*?<\/style>/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+console.log('Agentic contract verification (dist/):');
+
+// --- content-no-js (essential) ---
+const html = read('index.html');
+const text = visibleText(html);
+check('raw HTML has exactly one <h1>', (html.match(/<h1/g) || []).length === 1, `count=${(html.match(/<h1/g) || []).length}`);
+check('raw HTML has 500+ chars of text', text.length >= 500, `chars=${text.length}`);
+check('raw HTML mentions a project', html.includes('Zellia80-HE') || html.includes('deepseek-code'), 'project cards present');
+
+// --- agent-friendly 404 (essential) ---
+const notFound = read('404.html');
+check('404.html exists with recovery links', /\[Site map\]\(https:\/\/mhdimo\.github\.io\/sitemap\.xml\)/.test(notFound) && /llms\.txt/.test(notFound), 'markdown links to sitemap + llms.txt');
+// The markdown recovery block lives inside <pre> so its formatting is
+// preserved verbatim for parsers; assert its exact content.
+const mdBlock = notFound.match(/<pre>([\s\S]*?)<\/pre>/)?.[1] ?? '';
+check('404.html markdown block has heading + links', /# 404/.test(mdBlock) && /- \[[^\]]+\]\(https:\/\/mhdimo\.github\.io\/[^)]+\)/.test(mdBlock) && /llms\.txt/.test(mdBlock), 'markdown heading + links in body');
+
+// --- JSON-LD (recommended) ---
+const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+const types = ldBlocks.map(b => b['@type']);
+check('JSON-LD parses (3 blocks)', ldBlocks.length === 3, `types=${types.join(', ')}`);
+const person = ldBlocks.find(b => b['@type'] === 'Person');
+check('Person has contactPoint + email', !!person?.contactPoint?.email && !!person?.contactPoint?.contactType);
+check('Person has address', person?.address?.addressLocality === 'Berlin');
+check('Person has sameAs', Array.isArray(person?.sameAs) && person.sameAs.length >= 3);
+const organization = ldBlocks.find(b => b['@type'] === 'Organization');
+check('Organization has contactPoint + email', !!organization?.contactPoint?.email && !!organization?.contactPoint?.contactType);
+check('Organization has PostalAddress', organization?.address?.['@type'] === 'PostalAddress' && !!organization?.address?.addressLocality);
+const website = ldBlocks.find(b => b['@type'] === 'WebSite');
+check('WebSite present with publisher', !!website?.url && !!website?.publisher);
+
+// --- llms.txt + when-to-use (recommended) ---
+const llms = read('llms.txt');
+check('llms.txt exists', llms.length > 0);
+check('llms.txt has when-to-use guidance', /when to use/i.test(llms), 'section present');
+
+// --- sitemap (recommended) ---
+const sitemap = read('sitemap.xml');
+const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+check('sitemap.xml lists home + 3 anchors', ['https://mhdimo.github.io/', '/about/', '/contact/', '/privacy/'].every(u => locs.some(l => l.endsWith(u))), `urls=${locs.length}`);
+
+// --- robots.txt ---
+const robots = read('robots.txt');
+check('robots.txt allows and points to sitemap', /^Allow: \/$/m.test(robots) && /Sitemap: https:\/\/mhdimo\.github\.io\/sitemap\.xml/.test(robots));
+
+// --- metadata (recommended) ---
+check('canonical link present', html.includes('rel="canonical" href="https://mhdimo.github.io/"'));
+check('og:image present + file exists', html.includes('og:image') && existsSync(resolve(DIST, 'og-image.png')));
+check('og:type + html lang', html.includes('property="og:type"') && /<html lang="en"/.test(html));
+
+// --- trust anchors (recommended) ---
+for (const page of ['about', 'contact', 'privacy']) {
+  const p = read(`${page}/index.html`);
+  check(`${page}/ has 500+ chars`, visibleText(p).length >= 500, `chars=${visibleText(p).length}`);
+}
+
+console.log('');
+if (failures.length > 0) {
+  console.error(`✗ ${failures.length}/${checks} agentic checks FAILED: ${failures.join(', ')}`);
+  process.exit(1);
+}
+console.log(`✓ all ${checks} agentic checks passed`);
