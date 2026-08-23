@@ -43,7 +43,29 @@ const html = read('index.html');
 const text = visibleText(html);
 check('raw HTML has exactly one <h1>', (html.match(/<h1/g) || []).length === 1, `count=${(html.match(/<h1/g) || []).length}`);
 check('raw HTML has 500+ chars of text', text.length >= 500, `chars=${text.length}`);
-check('raw HTML mentions a project', html.includes('Zellia80-HE') || html.includes('deepseek-code'), 'project cards present');
+const FEATURED = ['ai-sdk-cpp', 'deepseek-code', 'vllm-metal', 'Zellia80-HE'];
+check('raw HTML shows all 4 featured projects', FEATURED.every(name => html.includes(name)), `missing=${FEATURED.filter(n => !html.includes(n)).join(',') || 'none'}`);
+// Star-descending fallback order: vllm-metal 1631 > ai-sdk-cpp 31 > Zellia80-HE 24 > deepseek-code 5
+const STAR_ORDER = ['vllm-metal', 'ai-sdk-cpp', 'Zellia80-HE', 'deepseek-code'];
+const orderIdx = STAR_ORDER.map(n => html.indexOf(n));
+const starOrder = orderIdx.every((v, i) => v >= 0 && (i === 0 || v > orderIdx[i - 1]));
+check('projects ordered by stars (SSR order)', starOrder, `order=${STAR_ORDER.map((n, i) => `${n}@${orderIdx[i]}`).join(' ')}`);
+// Round-4 redesign removed project logos (user decision); the cards must stay
+// text-only. Scope to the projects section — the vLLM avatar legitimately
+// appears in the Experience section as a company logo.
+const projectsHtml = html.slice(html.indexOf('id="projects"'));
+check('project cards are text-only (no images)', !/<img/.test(projectsHtml), 'logos removed per redesign');
+// Experience entries carry their company's brand mark (vLLM, Amazon, KBDfans).
+// Company logos are hosted locally (external signed CDN URLs get blocked in
+// browsers); vLLM's org avatar is a stable GitHub CDN asset.
+const LOGO_URLS = [
+  'avatars.githubusercontent.com/u/136984999',      // vLLM bolt
+  '/images/amazon-logo.jpg',
+  '/images/kbdfans-logo.png',
+];
+check('experience company logos shipped', LOGO_URLS.every(u => html.includes(u)), `missing=${LOGO_URLS.filter(u => !html.includes(u)).join(',') || 'none'}`);
+check('company logo files exist in dist', existsSync(resolve(DIST, 'images/amazon-logo.jpg')) && existsSync(resolve(DIST, 'images/kbdfans-logo.png')), 'local logo assets');
+check('no git-branch decoration left over', !html.includes('git-branch-icon'), 'branches removed');
 
 // --- agent-friendly 404 (essential) ---
 const notFound = read('404.html');

@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { GithubRepo } from '../types';
-import { GITHUB_USERNAME, FEATURED_REPOS, REPO_FALLBACKS } from '../constants';
+import { FEATURED_REPOS, REPO_FALLBACKS } from '../constants';
 
 const GithubProjects: React.FC = () => {
   // Start from static fallback data so the cards are present in the
@@ -13,9 +12,9 @@ const GithubProjects: React.FC = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        // Fetch specific repos from FEATURED_REPOS list
-        const repoPromises = FEATURED_REPOS.map(repoName =>
-          fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${repoName}`)
+        // Fetch specific repos from FEATURED_REPOS list (owner/repo)
+        const repoPromises = FEATURED_REPOS.map(fullName =>
+          fetch(`https://api.github.com/repos/${fullName}`)
         );
         const responses = await Promise.all(repoPromises);
         const data = await Promise.all(
@@ -59,9 +58,12 @@ const GithubProjects: React.FC = () => {
     </div>
   );
 
+  // Most-starred first.
+  const sorted = [...repos].sort((a, b) => b.stargazers_count - a.stargazers_count);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {repos.map((repo) => (
+      {sorted.map((repo) => (
         <a
           key={repo.id}
           href={repo.html_url}

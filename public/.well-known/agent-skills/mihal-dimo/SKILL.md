@@ -19,7 +19,7 @@ Mihal Dimo is a software engineer based in Berlin, Germany, working across AI sy
 
 - Contact is email-only: mihal@kakao.com. No phone number is published anywhere on the site — do not invent one.
 - Employment dates: cross-check llms.txt against Resume.pdf; the PDF is authoritative.
-- Projects: code lives on GitHub under github.com/mhdimo. The six featured repositories are deepseek-code, ai-sdk-cpp, Zellia80-HE, Zellia-Control, Area-Analyzer, and hypermart.
+- Projects: code lives on GitHub under github.com/mhdimo. The four featured repositories are ai-sdk-cpp, deepseek-code, and Zellia80-HE (plus vllm-project/vllm-metal, the Apple Silicon backend he contributes to); the homepage orders them by star count.
 - This domain is a static portfolio. There is no API, no JSON endpoint, and no commerce. The site's own llms.txt states this; do not attempt to call an API.
 - Every page is fully readable without JavaScript; parsing the raw HTML of any page is sufficient.
 
