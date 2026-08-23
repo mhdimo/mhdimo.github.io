@@ -1,0 +1,7 @@
+# Security contact for mhdimo.github.io — Mihal Dimo's personal site
+# This is a static personal portfolio; there is no product, API, or service
+# behind this domain. For privacy matters, see /privacy/.
+Canonical: https://mhdimo.github.io/.well-known/security.txt
+Contact: mailto:mihal@kakao.com
+Expires: 2027-08-23T00:00:00Z
+Preferred-Languages: en, it
