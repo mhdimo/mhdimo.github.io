@@ -81,6 +81,10 @@ const types = ldBlocks.map(b => b['@type']);
 check('JSON-LD parses (3 blocks)', ldBlocks.length === 3, `types=${types.join(', ')}`);
 const person = ldBlocks.find(b => b['@type'] === 'Person');
 check('Person has contactPoint + email', !!person?.contactPoint?.email && !!person?.contactPoint?.contactType);
+// Brand entity: the mhdimo handle is mapped to the Person so search engines
+// associate the profile name with this domain (brand-name discoverability).
+check('Person has alternateName mhdimo', person?.alternateName === 'mhdimo');
+check('Person has knowsAbout topics', Array.isArray(person?.knowsAbout) && person.knowsAbout.length >= 3);
 check('Person has address', person?.address?.addressLocality === 'Berlin');
 check('Person has sameAs', Array.isArray(person?.sameAs) && person.sameAs.length >= 3);
 const organization = ldBlocks.find(b => b['@type'] === 'Organization');
@@ -125,6 +129,9 @@ for (const page of ['about', 'contact', 'privacy']) {
   const p = read(`${page}/index.html`);
   check(`${page}/ has 500+ chars`, visibleText(p).length >= 500, `chars=${visibleText(p).length}`);
 }
+// Brand entity on the About page: Person mainEntity mirrors sameAs/alternateName.
+const aboutPage = JSON.parse(read('about/index.html').match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+check('about/ Person mainEntity has sameAs + alternateName', aboutPage?.mainEntity?.alternateName === 'mhdimo' && Array.isArray(aboutPage?.mainEntity?.sameAs) && aboutPage.mainEntity.sameAs.length >= 3);
 
 // --- well-known agent skill (agentskills.io discovery 0.2.0) ---
 const skillIndex = JSON.parse(read('.well-known/agent-skills/index.json'));
