@@ -1,91 +1,141 @@
 
-import { ExperienceItem } from './types';
+import { ExperienceItem, GithubRepo } from './types';
 
 export const GITHUB_USERNAME = 'mhdimo';
 export const PROFILE_IMAGE_URL = 'https://github.com/mhdimo.png';
 
+export const CONTACT_INFO = {
+  email: 'mihal@kakao.com',
+  location: 'Berlin, Germany',
+};
+
 // Add the repository names you want to feature (in order)
 export const FEATURED_REPOS = [
+  'deepseek-code',
+  'ai-sdk-cpp',
   'Zellia80-HE',
   'Zellia-Control',
   'Area-Analyzer',
   'hypermart',
-  
+
   // Add more repo names here
-]; 
+];
+
+// Static fallback data so project cards exist in the server-rendered HTML
+// (and survive GitHub API rate limits). The live data replaces this once the
+// page loads. Descriptions are drawn from the project's public materials.
+export const REPO_FALLBACKS: GithubRepo[] = [
+  {
+    id: 0,
+    name: 'deepseek-code',
+    description: 'Terminal AI coding agent in TypeScript — multi-step agentic loop, real-time streaming, tool execution, and MCP extensibility with a provider abstraction layer.',
+    html_url: `https://github.com/${GITHUB_USERNAME}/deepseek-code`,
+    stargazers_count: 5,
+    language: 'TypeScript',
+    updated_at: '',
+  },
+  {
+    id: 1,
+    name: 'ai-sdk-cpp',
+    description: 'C++20 LLM orchestration framework using coroutines and Boost.Asio — high-concurrency agent workflows with a C ABI FFI for Python, Node.js, Rust, and Go.',
+    html_url: `https://github.com/${GITHUB_USERNAME}/ai-sdk-cpp`,
+    stargazers_count: 31,
+    language: 'C++',
+    updated_at: '',
+  },
+  {
+    id: 2,
+    name: 'Zellia80-HE',
+    description: 'Firmware for the Zellia Hall Effect keyboard project at KBDfans — technical lead for firmware and hardware development, five AT32 MCUs with parallel ADCs at 106 kHz scan rate.',
+    html_url: `https://github.com/${GITHUB_USERNAME}/Zellia80-HE`,
+    stargazers_count: 0,
+    language: 'C',
+    updated_at: '',
+  },
+  {
+    id: 3,
+    name: 'Zellia-Control',
+    description: 'Cross-platform configuration tool for Zellia Hall Effect switches built with SvelteKit and TypeScript — device tuning, firmware updates, and profile management with 8+ profiles.',
+    html_url: `https://github.com/${GITHUB_USERNAME}/Zellia-Control`,
+    stargazers_count: 0,
+    language: 'TypeScript',
+    updated_at: '',
+  },
+];
 
 export const SOCIAL_LINKS = {
   github: `https://github.com/${GITHUB_USERNAME}`,
   x: 'https://x.com/mihaldimo',
-  email: 'mailto:mihal@kakao.com',
+  email: `mailto:${CONTACT_INFO.email}`,
   linkedin: 'https://linkedin.com/in/mihaldimo/'
 };
 
 export const SKILLS_DATA = [
   {
     category: "Languages",
-    items: ["C", "C++", "Rust", "Python", "TypeScript/JavaScript", "Java", "HTML/CSS"]
+    items: ["C", "C++", "Rust", "Python", "TypeScript", "Java", "SQL"]
   },
   {
-    category: "Embedded & Hardware",
-    items: ["ARM Cortex-M", "CherryUSB", "QMK keyboard firmware", "KiCad (PCB design)"]
+    category: "ML Systems",
+    items: ["vLLM", "MLX (custom Metal kernels)", "PyTorch", "Metal/MPS backends", "Speculative decoding", "Quantization", "KV-cache optimization", "Embeddings", "Recommender systems", "DQN"]
   },
   {
-    category: "Web / Full-Stack",
-    items: ["SvelteKit", "Tauri (Rust)", "Node.js (Bun/Yarn/Npm/Pnpm)", "Tailwind CSS (HTML/CSS)"]
+    category: "LLM Tooling",
+    items: ["MCP", "Multi-provider LLM APIs", "AI-SDK", "Claude Code"]
   },
   {
-    category: "Data & DevOps",
-    items: ["OpenCV", "NumPy", "Matplotlib", "Apache Spark", "Kafka", "Elasticsearch", "Kibana", "Docker"]
+    category: "Systems & Data",
+    items: ["Linux", "Docker", "AWS", "REST APIs", "Kafka", "PySpark", "OpenSearch", "Parquet", "Pandas", "NumPy"]
   },
   {
-    category: "Tools",
-    items: ["Git", "VSCode", "Bash", "LaTeX", "Linux"]
+    category: "Embedded & Web",
+    items: ["ARM Cortex-M", "KiCad", "USB/WebUSB", "FastAPI", "Node.js", "SvelteKit", "React"]
   }
 ];
 
 export const EDUCATION_DATA: ExperienceItem[] = [
- // {
- //   title: "MSc in Artificial Intelligence",
- //   organization: "(Hopefully) Technical University of Berlin",
- //   period: "2026 - 2028",
- //   description: ""
- // },
   {
-    position: "Bsc in Computer Science",
+    position: "BSc in Computer Science",
     organization: "University of Catania",
     location: "Catania, Italy",
     period: "2021 - 2026",
-    description: "Relevant Coursework: Embedded systems, Algorithm \& Data Structures, Operating Systems."
+    description: "Relevant Coursework: Embedded systems, Algorithm \& Data Structures, Linear Algebra."
   },
   {
-    position: "Erasmus exchange in Computer Science",
+    position: "BSc in Computer Science — Erasmus+ Exchange",
     organization: "Brandenburg Technical University",
     location: "Cottbus, Germany",
     period: "Feb 2024 - Sep 2024",
-    description: "Relevant Coursework: Mathematical methods for Artificial Intelligence, Calculus, Software Security."
+    description: "Relevant Coursework: Applied Linear Algebra for AI, Calculus, Software Security."
   }
 ];
 
 export const WORK_DATA: ExperienceItem[] = [
   {
-    position: "Software Development Engineer(Machine Learning) Intern",
+    position: "Software Engineer (Open Source)",
+    organization: "vLLM Project",
+    location: "Open Source",
+    period: "Jul 2026 - Present",
+    description: "Contributing DSpark/EAGLE-style speculative decoding to the vLLM Apple Silicon Metal backend.\nOptimized speculative decoding with scheduler-managed KV prefix reuse, eliminating redundant KV re-ingestion: 31× faster 8K first-propose latency (3.47s → 112ms), 2.1× end-to-end latency (64.0 → 30.8 ms/token), and 50% less steady-state KV ingest.\nExtended the paged KV-cache infrastructure with configurable memory usage reporting for long-context inference workloads."
+  },
+  {
+    position: "Software Development Engineer Intern",
     organization: "Amazon",
     location: "Berlin, Germany",
     period: "Jan 2026 - Jul 2026",
-    description: "Currently interning in Amazon music."
+    description: "Engineered a full-stack embedding search platform over 50M embeddings with PCA/UMAP visualization and sub-5ms K-Nearest-Neighbours queries, enabling faster Music recommender experimentation.\nDesigned a two-stage batch indexing pipeline: a weekly job performs metadata hydration and writes partitioned Parquet files to S3, followed by an AWS ECS ingestion task that indexes entities into OpenSearch.\nImplemented a Parquet-based storage layer with entity-level partitioning, reducing per-session data transfer ~20×.\nBuilt a FastAPI backend on AWS ECS unifying search, ingestion status, and visualization workflows, with CloudWatch monitoring for pipeline reliability."
   },
   {
-    position: "Embedded Software Engineer",
+    position: "Firmware Lead & Embedded Software Engineer",
     organization: "KBDfans (Partner)",
     location: "Changzhou, Jiangsu, China",
-    period: "Mar 2024 - Present",
-    description: "Technical Lead for firmware and hardware development of the Zellia Hall Effect project, leading a team of five C/C++ engineers and supporting more than four PCB layouts with enhanced modularity.\nStreamlined multi-layer PCB designs using KiCad 8.0, including custom Hall sensor footprints, optimized for high precision and flexible switch configurations.\nIncreased ADC scan rate from 1 kHz to 106 kHz (10500% improvement) by leveraging a multi-MCU architecture with UART communication and parallel ADCs, resulting in a 90% reduction in key press and release latency.\nDeveloped an open-source, cross-platform configuration tool using Tauri and SvelteKit, featuring real-time input tuning, 0.005 mm resolution, and support for more than eight programmable layers."
+    period: "Mar 2024 - Dec 2025",
+    description: "Led firmware and hardware development for the Zellia Hall Effect project (team of five C/C++ engineers): a distributed embedded system across five AT32 MCUs with enhanced modularity and multi-layout keyboard, designed in KiCad 8.0.\nAchieved <0.28 ms input latency at a 106 kHz scan rate by decoupling signal acquisition and processing, with a custom 7.5 Mbps UART protocol for multi-MCU synchronization.\nOffloaded ADC normalization and calibration to slave MCUs, cutting master CPU load by 90%.\nDeveloped a cross-platform configuration tool (SvelteKit, TypeScript) for device tuning, firmware updates, and profile management with 8+ configurable profiles."
   }
 ];
 
 export const ABOUT_ME_TEXT = `
-  I am a Software Engineer and Embedded Software Developer focused in low-latency and High Speed Systems.
-  I specialize in building high-performance & low latency systems where every clock cycle and byte of 
-  memory matters.
+  I am a Software Engineer working across AI systems and embedded hardware — from speculative
+  decoding in the vLLM Apple Silicon backend to Hall-effect keyboard firmware. I specialize in
+  high-performance, low-latency systems where every clock cycle and byte of memory matters.
 `;

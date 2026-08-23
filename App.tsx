@@ -33,7 +33,7 @@ const App: React.FC = () => {
             {/* Skills Section */}
             <section>
               <div className="mb-12">
-                <h3 className="text-3xl font-black tracking-tight uppercase">Technical Skills.</h3>
+                <h2 className="text-3xl font-black tracking-tight uppercase">Technical Skills.</h2>
               </div>
               <Skills />
             </section>
@@ -52,17 +52,20 @@ const App: React.FC = () => {
             {/* Projects Section */}
             <section id="projects" className="pt-4">
               <div className="mb-12">
-                <h3 className="text-3xl font-black tracking-tight uppercase">Projects.</h3>
+                <h2 className="text-3xl font-black tracking-tight uppercase">Projects.</h2>
               </div>
               <GithubProjects />
             </section>
 
             {/* Footer */}
             <footer className="pt-24 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 opacity-40 text-xs font-bold uppercase tracking-[0.4em]">
-              <p>© 2024 Mihal Dimo</p>
-              <div className="flex space-x-12">
-                <a href={SOCIAL_LINKS.github} target="_blank" className="hover:opacity-100 transition-opacity">GitHub</a>
-                <a href={SOCIAL_LINKS.linkedin} target="_blank" className="hover:opacity-100 transition-opacity">LinkedIn</a>
+              <p>© 2026 Mihal Dimo</p>
+              <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
+                <a href="/about/" className="hover:opacity-100 transition-opacity">About</a>
+                <a href="/contact/" className="hover:opacity-100 transition-opacity">Contact</a>
+                <a href="/privacy/" className="hover:opacity-100 transition-opacity">Privacy</a>
+                <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">GitHub</a>
+                <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">LinkedIn</a>
               </div>
             </footer>
           </main>

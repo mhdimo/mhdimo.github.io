@@ -32,15 +32,15 @@ const Navbar: React.FC = () => {
     <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-black/90 backdrop-blur-lg border-b border-black/5 dark:border-white/5 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
         <div className="hidden lg:flex lg:w-80 justify-center">
-          <h1 className="text-3xl font-black tracking-tighter uppercase leading-none cursor-default">
+          <span className="text-3xl font-black tracking-tighter uppercase leading-none cursor-default">
             Mihal <span className="opacity-40 font-light">Dimo</span>
-          </h1>
+          </span>
         </div>
 
         <div className="lg:hidden">
-           <h1 className="text-2xl font-black tracking-tighter uppercase leading-none cursor-default">
+           <span className="text-2xl font-black tracking-tighter uppercase leading-none cursor-default">
             Mihal <span className="opacity-40 font-light">Dimo</span>
-          </h1>
+          </span>
         </div>
 
         <div className="flex items-center space-x-6 md:space-x-10">
