@@ -17,9 +17,9 @@ const Sidebar: React.FC = () => {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-4xl font-black tracking-tighter uppercase leading-none">
+          <h1 className="text-4xl font-black tracking-tighter uppercase leading-none">
             Mihal <span className="opacity-30 font-light">Dimo</span>
-          </h2>
+          </h1>
           <p className="text-sm font-bold uppercase tracking-[0.5em] opacity-40">
             Software engineer
           </p>

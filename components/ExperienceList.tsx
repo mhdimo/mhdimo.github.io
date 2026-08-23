@@ -10,7 +10,7 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ items, title }) => {
   return (
     <div className="mb-16">
       <div className="mb-12">
-        <h3 className="text-3xl font-black tracking-tight uppercase">{title}.</h3>
+        <h2 className="text-3xl font-black tracking-tight uppercase">{title}.</h2>
       </div>
       <div className="space-y-16">
         {items.map((item, idx) => (

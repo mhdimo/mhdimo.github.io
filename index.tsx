@@ -9,9 +9,6 @@ if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// The server-prerendered markup in index.html is hydrated so AI crawlers and
+// no-JS visitors already see real content in the raw HTML.
+const root = ReactDOM.hydrateRoot(rootElement, <React.StrictMode><App /></React.StrictMode>);

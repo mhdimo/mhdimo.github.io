@@ -1,0 +1,80 @@
+/* Shared minimal styles for static pages (404, about, contact, privacy).
+   Kept dependency-free so these pages read fine without JavaScript. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --dim: rgba(10, 10, 10, 0.55);
+  --line: rgba(10, 10, 10, 0.15);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f4f4f2;
+    --dim: rgba(244, 244, 242, 0.55);
+    --line: rgba(244, 244, 242, 0.15);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  padding: 0 1.5rem;
+  max-width: 46rem;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+main { width: 100%; }
+h1 {
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+h2 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--dim);
+  font-weight: 700;
+  margin: 2.5rem 0 0.75rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+p { margin: 0 0 1rem; }
+a { color: var(--fg); }
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8125rem;
+  background: color-mix(in srgb, var(--fg) 5%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  background: color-mix(in srgb, var(--fg) 7%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.meta {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.back { margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1rem; font-size: 0.875rem; }
