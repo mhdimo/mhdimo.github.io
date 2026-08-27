@@ -91,18 +91,18 @@ export const SKILLS_DATA = [
 
 export const EDUCATION_DATA: ExperienceItem[] = [
   {
-    position: "Bachelor of Science in Computer Science",
+    position: "Bachelor's of Science in Computer Science",
     organization: "University of Catania",
     location: "Catania, Italy",
-    period: "2021 - 2026",
-    description: "Relevant Coursework: Embedded systems, Algorithm \& Data Structures, Linear Algebra."
+    period: "Sep 2021 - Dec 2026",
+    description: "Coursework: Embedded systems, Algorithm \& Data Structures, Linear Algebra."
   },
   {
-    position: "Bachelor of Science in Computer Science — Erasmus+ Exchange",
+    position: "Bachelor's of Science in Computer Science — Erasmus+ Exchange",
     organization: "Brandenburg Technical University",
     location: "Cottbus, Germany",
     period: "Feb 2024 - Sep 2024",
-    description: "Relevant Coursework: Applied Linear Algebra for AI, Calculus, Software Security."
+    description: "Coursework: Applied Linear Algebra for AI, Calculus, Software Security."
   }
 ];
 

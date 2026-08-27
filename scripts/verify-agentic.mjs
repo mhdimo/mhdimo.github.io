@@ -74,6 +74,39 @@ check('404.html exists with recovery links', /\[Site map\]\(https:\/\/mhdimo\.gi
 // preserved verbatim for parsers; assert its exact content.
 const mdBlock = notFound.match(/<pre>([\s\S]*?)<\/pre>/)?.[1] ?? '';
 check('404.html markdown block has heading + links', /# 404/.test(mdBlock) && /- \[[^\]]+\]\(https:\/\/mhdimo\.github\.io\/[^)]+\)/.test(mdBlock) && /llms\.txt/.test(mdBlock), 'markdown heading + links in body');
+// The recovery block must surface every agent entry point: the MCP server
+// card, the full-content variant, and the per-page markdown mirrors.
+check('404.md block links MCP card + llms-full + mirrors', mdBlock.includes('/.well-known/mcp') && mdBlock.includes('llms-full.txt') && ['index.md', 'about.md', 'contact.md', 'privacy.md'].every(m => mdBlock.includes(m)), 'recovery map complete');
+check('404.md block states email-only contact', /mihal@kakao\.com/.test(mdBlock) && /no phone number/.test(mdBlock), 'contact + privacy guard');
+
+// --- markdown mirrors (static content negotiation supplement) ---
+// GitHub Pages serves files by extension, so *.md ships as a markdown
+// resource at a predictable URL even though header negotiation needs a CDN.
+const MIRRORS = { 'index.md': 'Mihal Dimo', 'about.md': 'Berlin', 'contact.md': 'mihal@kakao.com', 'privacy.md': 'GitHub Pages' };
+for (const [file, marker] of Object.entries(MIRRORS)) {
+  const md = read(file);
+  check(`${file} exists with real content`, md.length >= 400 && md.includes(marker), `chars=${md.length}`);
+  check(`${file} declares its canonical HTML page`, md.includes('https://mhdimo.github.io/') && /canonical/.test(md), 'mirror points back');
+}
+
+// --- MCP server card (SEP-2127 experimental, published at both
+//     /.well-known/mcp and /.well-known/mcp.json) ---
+function validateServerCard(card, label) {
+  const required = ['$schema', 'name', 'description', 'version'];
+  const missing = required.filter(k => !(k in card));
+  check(`${label}: required fields present`, missing.length === 0, `missing=${missing.join(',') || 'none'}`);
+  check(`${label}: $schema is the v1 server-card schema`, card.$schema === 'https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json');
+  check(`${label}: name is reverse-DNS with one slash`, /^[a-z0-9.-]+\/[a-z0-9-]+$/.test(card.name || ''), card.name);
+  check(`${label}: version is semver`, /^\d+\.\d+\.\d+/.test(card.version || ''), card.version);
+  check(`${label}: claims no transport (static site)`, !('remotes' in card), 'remotes intentionally omitted');
+  check(`${label}: _meta points at llms.txt`, !!card._meta?.['io.github.mhdimo/discovery']?.agentGuide?.includes('/llms.txt'), 'discovery pointers present');
+}
+const mcpCard = JSON.parse(read('.well-known/mcp'));
+const mcpCardJson = JSON.parse(read('.well-known/mcp.json'));
+validateServerCard(mcpCard, '.well-known/mcp');
+validateServerCard(mcpCardJson, '.well-known/mcp.json');
+check('mcp and mcp.json are byte-identical', read('.well-known/mcp') === read('.well-known/mcp.json'), 'single source of truth');
+check('llms.txt documents the MCP card + mirrors', read('llms.txt').includes('/.well-known/mcp') && read('llms.txt').includes('index.md') && read('llms.txt').includes('llms-full.txt'));
 
 // --- JSON-LD (recommended) ---
 const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
@@ -92,6 +125,7 @@ check('Organization has contactPoint + email', !!organization?.contactPoint?.ema
 check('Organization has PostalAddress', organization?.address?.['@type'] === 'PostalAddress' && !!organization?.address?.addressLocality);
 const website = ldBlocks.find(b => b['@type'] === 'WebSite');
 check('WebSite present with publisher', !!website?.url && !!website?.publisher);
+check('WebSite has alternateName variants', Array.isArray(website?.alternateName) && website.alternateName.includes('mhdimo'), (website?.alternateName || []).join(', '));
 
 // --- llms.txt + when-to-use (recommended) ---
 const llms = read('llms.txt');

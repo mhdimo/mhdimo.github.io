@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
+  "name": "io.github.mhdimo/portfolio",
+  "title": "Mihal Dimo — Portfolio",
+  "description": "Read-only agent content for the personal portfolio of Mihal Dimo, a software engineer working on LLM inference systems and embedded firmware. Provides resume facts (experience, education, skills), featured open-source projects, and contact information. This domain is static GitHub Pages hosting: it exposes NO live MCP transport and no tools. Consume the content instead via /llms.txt (short) or /llms-full.txt (full), both maintained manually.",
+  "version": "1.0.0",
+  "websiteUrl": "https://mhdimo.github.io/",
+  "repository": {
+    "source": "github",
+    "url": "https://github.com/mhdimo/mhdimo.github.io"
+  },
+  "_meta": {
+    "io.github.mhdimo/discovery": {
+      "agentGuide": "https://mhdimo.github.io/llms.txt",
+      "fullContent": "https://mhdimo.github.io/llms-full.txt",
+      "sitemap": "https://mhdimo.github.io/sitemap.xml",
+      "markdownMirrors": [
+        "https://mhdimo.github.io/index.md",
+        "https://mhdimo.github.io/about.md",
+        "https://mhdimo.github.io/contact.md",
+        "https://mhdimo.github.io/privacy.md"
+      ],
+      "transport": "none (static hosting; no MCP endpoint)"
+    }
+  }
+}

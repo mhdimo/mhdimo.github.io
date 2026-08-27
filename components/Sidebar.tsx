@@ -24,9 +24,9 @@ const Sidebar: React.FC = () => {
         </div>
 
         <div className="space-y-5">
-          <h1 className="font-display font-bold uppercase leading-[1.1] text-[2rem] tracking-[0.06em]">
+          <h1 className="font-black uppercase leading-none text-3xl tracking-tighter">
             Mihal<br />
-            <span className="opacity-40">Dimo</span>
+            <span className="opacity-30 font-light">Dimo</span>
           </h1>
           <div className="space-y-1.5 font-mono text-[11px] uppercase tracking-[0.22em]">
             <p className="text-muted">Software engineer</p>

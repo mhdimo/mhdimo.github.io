@@ -27,8 +27,8 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 - Firmware Lead & Embedded Software Engineer, KBDfans (Partner) — Changzhou, China, Mar 2024 - Dec 2025. Technical lead for the Zellia Hall Effect keyboard project (team of five C/C++ engineers): distributed embedded system across five AT32 MCUs with KiCad 8.0 PCB layouts; <0.28 ms input latency at 106 kHz scan rate with a custom 7.5 Mbps UART protocol; offloaded ADC normalization/calibration to slave MCUs, cutting master CPU load 90%; cross-platform configuration tool (SvelteKit, TypeScript) with 8+ configurable profiles.
 
 ## Education
-- Bachelor of Science in Computer Science, University of Catania, Catania, Italy, 2021 - 2026. Coursework: Embedded systems, Algorithms & Data Structures, Linear Algebra.
-- Bachelor of Science in Computer Science — Erasmus+ Exchange, Brandenburg Technical University, Cottbus, Germany, Feb 2024 - Sep 2024. Coursework: Applied Linear Algebra for AI, Calculus, Software Security.
+- Bachelor's of Science in Computer Science, University of Catania, Catania, Italy, Sep 2021 - Dec 2026. Coursework: Embedded systems, Algorithms & Data Structures, Linear Algebra.
+- Bachelor's of Science in Computer Science — Erasmus+ Exchange, Brandenburg Technical University, Cottbus, Germany, Feb 2024 - Sep 2024. Coursework: Applied Linear Algebra for AI, Calculus, Software Security.
 
 ## Skills
 - Languages: C, C++, Rust, Python, TypeScript, Java, SQL

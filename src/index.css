@@ -74,11 +74,6 @@
 }
 
 @layer components {
-  /* Martian Mono carries a width axis; display labels run wide. */
-  .font-expanded {
-    font-stretch: 112.5%;
-  }
-
   /* One orchestrated page-load moment: rail and hero settle in sequence.
      Disabled wholesale by the prefers-reduced-motion rule above. */
   .rise {

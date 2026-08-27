@@ -22,10 +22,9 @@ export default {
         onaccent: 'var(--on-accent)',
       },
       fontFamily: {
-        sans: ['"Hanken Grotesk"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        mono: ['"Martian Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
-        // Inscriptional caps — the engraved, funereal display voice.
-        display: ['Cinzel', 'Georgia', 'serif'],
+        // The proven stack from the previous design — render-verified.
+        sans: ['"Noto Sans SC"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       },
     },
   },

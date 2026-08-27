@@ -10,7 +10,7 @@ import { EDUCATION_DATA, WORK_DATA, ABOUT_ME_TEXT, SOCIAL_LINKS } from './consta
 /** Section label with its hairline rule: the page's only heading device. */
 const SectionHeading: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="flex items-baseline gap-5 mb-10 md:mb-14">
-    <h2 className="font-display font-semibold uppercase text-xl md:text-2xl tracking-[0.08em] whitespace-nowrap">
+    <h2 className="font-black uppercase text-2xl md:text-3xl tracking-tight whitespace-nowrap">
       {children}
     </h2>
     <span aria-hidden="true" className="flex-1 h-px bg-line" />

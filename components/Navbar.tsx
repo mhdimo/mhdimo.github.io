@@ -40,9 +40,9 @@ const Navbar: React.FC = () => {
         <button
           onClick={() => scrollToSection('home')}
           aria-label="Back to top"
-          className="font-display font-bold uppercase tracking-[0.08em] text-base leading-none cursor-default"
+          className="font-black uppercase tracking-tighter text-xl leading-none cursor-default"
         >
-          Mihal&nbsp;<span className="opacity-40">Dimo</span>
+          Mihal&nbsp;<span className="opacity-40 font-light">Dimo</span>
         </button>
 
         {/* Section links only where they fit — on phones the page scrolls
