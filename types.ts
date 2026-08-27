@@ -26,6 +26,4 @@ export interface ExperienceItem {
   logo?: string;
   /** Tile background the logo reads best on (its baked-in background or contrast). */
   logoTile?: 'white' | 'black';
-  /** Two brand colors; the paragraph's line renders as this vertical gradient. */
-  accent?: [string, string];
 }

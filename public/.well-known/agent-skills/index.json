@@ -4,9 +4,9 @@
     {
       "name": "mihal-dimo",
       "type": "skill-md",
-      "description": "Research Mihal Dimo — software engineer working across AI systems and embedded hardware. Use when asked about Mihal Dimo's background, work history, projects, skills, education, or contact information.",
+      "description": "Research Mihal Dimo — software engineer working on LLM inference systems and embedded firmware. Use when asked about Mihal Dimo's background, work history, projects, skills, education, or contact information.",
       "url": "https://mhdimo.github.io/.well-known/agent-skills/mihal-dimo/SKILL.md",
-      "digest": "sha256:7ea2baccdde81bf3213e6b2af4a9ddfe2fe967e3775307ecaae61472a12ba62f"
+      "digest": "sha256:ee364bcfe91858729b2b7e2878a9c25a61fa7818428d0941e607ba9c1b36b5c6"
     }
   ]
 }

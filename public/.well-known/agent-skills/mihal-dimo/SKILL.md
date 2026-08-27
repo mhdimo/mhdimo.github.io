@@ -1,11 +1,11 @@
 ---
 name: mihal-dimo
-description: Research Mihal Dimo — software engineer working across AI systems and embedded hardware (vLLM Apple Silicon backend contributor, Amazon Music ML intern, Zellia Hall Effect keyboard firmware lead). Use when asked about Mihal Dimo's background, work history, projects, skills, education, or contact information.
+description: Research Mihal Dimo — software engineer working on LLM inference systems and embedded firmware (vLLM contributor, Amazon Music ML intern, Zellia Hall Effect keyboard firmware lead). Use when asked about Mihal Dimo's background, work history, projects, skills, education, or contact information.
 ---
 
 # Mihal Dimo — Agent Research Skill
 
-Mihal Dimo is a software engineer based in Berlin, Germany, working across AI systems and embedded hardware. This skill explains how to research him correctly and efficiently.
+Mihal Dimo is a software engineer based in Berlin, Germany, working on LLM inference systems and embedded firmware. This skill explains how to research him correctly and efficiently.
 
 ## Canonical sources, in order
 

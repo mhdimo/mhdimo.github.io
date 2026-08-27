@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Design tokens — "measurement log".
+ * Dark is the default instrument panel (amber phosphor on warm ink);
+ * light mode derives from the same roles for daylight bench work.
+ * Components never hardcode black/white — they read these roles.
+ */
+:root {
+  --ground: #f4f3ee;
+  --panel: #ecebe3;
+  --fg: #191813;
+  --muted: #6e6c63;
+  --line: rgba(25, 24, 19, 0.15);
+  --accent: #8f5d00;
+  --accent-line: rgba(143, 93, 0, 0.4);
+  --on-accent: #f4f3ee;
+}
+
+.dark {
+  --ground: #060606;
+  --panel: #0f0f0f;
+  --fg: #e9e9e6;
+  --muted: #8e8e88;
+  --line: rgba(233, 233, 230, 0.13);
+  --accent: #ffb000;
+  --accent-line: rgba(255, 176, 0, 0.5);
+  --on-accent: #060606;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ground text-fg font-sans antialiased;
+    font-feature-settings: 'tnum' on;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 10px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Martian Mono carries a width axis; display labels run wide. */
+  .font-expanded {
+    font-stretch: 112.5%;
+  }
+
+  /* One orchestrated page-load moment: rail and hero settle in sequence.
+     Disabled wholesale by the prefers-reduced-motion rule above. */
+  .rise {
+    animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 80ms);
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

@@ -8,7 +8,26 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // Semantic roles resolved from CSS variables (see src/index.css),
+        // so the dark/light switch is a variable swap, not a class sweep.
+        ground: 'var(--ground)',
+        panel: 'var(--panel)',
+        fg: 'var(--fg)',
+        muted: 'var(--muted)',
+        line: 'var(--line)',
+        accent: 'var(--accent)',
+        accentline: 'var(--accent-line)',
+        onaccent: 'var(--on-accent)',
+      },
+      fontFamily: {
+        sans: ['"Hanken Grotesk"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        mono: ['"Martian Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
+        // Inscriptional caps — the engraved, funereal display voice.
+        display: ['Cinzel', 'Georgia', 'serif'],
+      },
+    },
   },
   plugins: [],
 }

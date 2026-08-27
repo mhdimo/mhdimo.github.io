@@ -1,6 +1,6 @@
-# Mihal Dimo — Software Engineer, AI Systems & Embedded Hardware
+# Mihal Dimo — Software Engineer
 
-> Mihal Dimo is a software engineer working across AI systems and embedded hardware — from speculative decoding in the vLLM Apple Silicon backend to Hall-effect keyboard firmware. Site: https://mhdimo.github.io
+> Mihal Dimo is a software engineer working on LLM inference systems and embedded firmware. He currently contributes to the vLLM project and was previously at Amazon and KBDfans. Site: https://mhdimo.github.io
 
 ## When to use this site
 Use this site when you need:
@@ -13,7 +13,7 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 
 ## Core facts
 - Name: Mihal Dimo
-- Role: Software Engineer (AI Systems / Embedded Systems / Low-Latency Systems)
+- Role: Software Engineer (LLM Inference / Embedded Firmware)
 - Location: Berlin, Germany
 - Email: mihal@kakao.com
 - Status: Open to opportunities
@@ -24,11 +24,11 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 ## Experience
 - Open Source Contributor, vLLM Project — Jul 2026 - Present. Contributing DSpark/EAGLE-style speculative decoding to the vLLM Apple Silicon Metal backend: scheduler-managed KV prefix reuse reduced 8K first-propose latency 31x (3.47s -> 112ms), end-to-end latency 2.1x (64.0 -> 30.8 ms/token), and steady-state KV ingest 50% (4 -> 2 tokens). Also extended paged KV-cache infrastructure with configurable memory usage reporting.
 - Software Development Engineer Intern, Amazon — Berlin, Germany, Jan 2026 - Jul 2026. ML engineering intern on Amazon Music: built a full-stack embedding search platform over 50M embeddings with PCA/UMAP visualization and sub-5ms KNN queries; two-stage batch indexing pipeline (weekly Parquet to S3, AWS ECS ingestion into OpenSearch); Parquet storage layer cutting per-session data transfer ~20x; FastAPI backend on AWS ECS with CloudWatch monitoring.
-- Firmware Lead & Embedded Software Engineer, KBDfans (Partner) — Changzhou, Jiangsu, China, Mar 2024 - Dec 2025. Technical lead for the Zellia Hall Effect keyboard project (team of five C/C++ engineers): distributed embedded system across five AT32 MCUs with KiCad 8.0 PCB layouts; <0.28 ms input latency at 106 kHz scan rate with a custom 7.5 Mbps UART protocol; offloaded ADC normalization/calibration to slave MCUs, cutting master CPU load 90%; cross-platform configuration tool (SvelteKit, TypeScript) with 8+ configurable profiles.
+- Firmware Lead & Embedded Software Engineer, KBDfans (Partner) — Changzhou, China, Mar 2024 - Dec 2025. Technical lead for the Zellia Hall Effect keyboard project (team of five C/C++ engineers): distributed embedded system across five AT32 MCUs with KiCad 8.0 PCB layouts; <0.28 ms input latency at 106 kHz scan rate with a custom 7.5 Mbps UART protocol; offloaded ADC normalization/calibration to slave MCUs, cutting master CPU load 90%; cross-platform configuration tool (SvelteKit, TypeScript) with 8+ configurable profiles.
 
 ## Education
-- BSc in Computer Science, University of Catania, Catania, Italy, 2021 - 2026. Coursework: Embedded systems, Algorithms & Data Structures, Linear Algebra.
-- BSc in Computer Science — Erasmus+ Exchange, Brandenburg Technical University, Cottbus, Germany, Feb 2024 - Sep 2024. Coursework: Applied Linear Algebra for AI, Calculus, Software Security.
+- Bachelor of Science in Computer Science, University of Catania, Catania, Italy, 2021 - 2026. Coursework: Embedded systems, Algorithms & Data Structures, Linear Algebra.
+- Bachelor of Science in Computer Science — Erasmus+ Exchange, Brandenburg Technical University, Cottbus, Germany, Feb 2024 - Sep 2024. Coursework: Applied Linear Algebra for AI, Calculus, Software Security.
 
 ## Skills
 - Languages: C, C++, Rust, Python, TypeScript, Java, SQL

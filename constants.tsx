@@ -91,14 +91,14 @@ export const SKILLS_DATA = [
 
 export const EDUCATION_DATA: ExperienceItem[] = [
   {
-    position: "BSc in Computer Science",
+    position: "Bachelor of Science in Computer Science",
     organization: "University of Catania",
     location: "Catania, Italy",
     period: "2021 - 2026",
     description: "Relevant Coursework: Embedded systems, Algorithm \& Data Structures, Linear Algebra."
   },
   {
-    position: "BSc in Computer Science — Erasmus+ Exchange",
+    position: "Bachelor of Science in Computer Science — Erasmus+ Exchange",
     organization: "Brandenburg Technical University",
     location: "Cottbus, Germany",
     period: "Feb 2024 - Sep 2024",
@@ -115,7 +115,6 @@ export const WORK_DATA: ExperienceItem[] = [
     description: "Contributing DSpark/EAGLE-style speculative decoding to the vLLM Apple Silicon Metal backend.\nOptimized speculative decoding with scheduler-managed KV prefix reuse, eliminating redundant KV re-ingestion: 31× faster 8K first-propose latency (3.47s → 112ms), 2.1× end-to-end latency (64.0 → 30.8 ms/token), and 50% less steady-state KV ingest.\nExtended the paged KV-cache infrastructure with configurable memory usage reporting for long-context inference workloads.",
     logo: 'https://avatars.githubusercontent.com/u/136984999?v=4',
     logoTile: 'white',
-    accent: ['#4f6ef2', '#a855f7'],
   },
   {
     position: "Software Development Engineer Intern",
@@ -125,22 +124,16 @@ export const WORK_DATA: ExperienceItem[] = [
     description: "Engineered a full-stack embedding search platform over 50M embeddings with PCA/UMAP visualization and sub-5ms K-Nearest-Neighbours queries, enabling faster Music recommender experimentation.\nDesigned a two-stage batch indexing pipeline: a weekly job performs metadata hydration and writes partitioned Parquet files to S3, followed by an AWS ECS ingestion task that indexes entities into OpenSearch.\nImplemented a Parquet-based storage layer with entity-level partitioning, reducing per-session data transfer ~20×.\nBuilt a FastAPI backend on AWS ECS unifying search, ingestion status, and visualization workflows, with CloudWatch monitoring for pipeline reliability.",
     logo: '/images/amazon-logo.jpg',
     logoTile: 'white',
-    accent: ['#ff9900', '#232f3e'],
   },
   {
     position: "Firmware Lead & Embedded Software Engineer",
     organization: "KBDfans (Partner)",
-    location: "Changzhou, Jiangsu, China",
+    location: "Changzhou, China",
     period: "Mar 2024 - Dec 2025",
     description: "Led firmware and hardware development for the Zellia Hall Effect project (team of five C/C++ engineers): a distributed embedded system across five AT32 MCUs with enhanced modularity and multi-layout keyboard, designed in KiCad 8.0.\nAchieved <0.28 ms input latency at a 106 kHz scan rate by decoupling signal acquisition and processing, with a custom 7.5 Mbps UART protocol for multi-MCU synchronization.\nOffloaded ADC normalization and calibration to slave MCUs, cutting master CPU load by 90%.\nDeveloped a cross-platform configuration tool (SvelteKit, TypeScript) for device tuning, firmware updates, and profile management with 8+ configurable profiles.",
     logo: '/images/kbdfans-logo.png',
     logoTile: 'black',
-    accent: ['#ff4d4d', '#7f1d1d'],
   }
 ];
 
-export const ABOUT_ME_TEXT = `
-  I am a Software Engineer working across AI systems and embedded hardware — from speculative
-  decoding in the vLLM Apple Silicon backend to Hall-effect keyboard firmware. I specialize in
-  high-performance, low-latency systems where every clock cycle and byte of memory matters.
-`;
+export const ABOUT_ME_TEXT = 'I work on LLM inference systems and embedded firmware — currently contributing to the vLLM project, previously at Amazon and KBDfans.';

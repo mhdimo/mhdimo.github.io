@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mihal Dimo — Software Engineer, Low-Latency &amp; Embedded Systems</title>
-    <meta name="description" content="Mihal Dimo — software engineer building low-latency embedded systems where every clock cycle and byte of memory matters. Machine learning engineering intern at Amazon Music; technical lead of the Zellia Hall Effect keyboard firmware project at KBDfans. C, C++, Rust, TypeScript.">
+    <title>Mihal Dimo — Software Engineer</title>
+    <meta name="description" content="Mihal Dimo — software engineer. LLM inference systems and embedded firmware. vLLM contributor, ML engineering intern at Amazon, firmware lead for the Zellia Hall Effect keyboard at KBDfans. C, C++, Rust, TypeScript.">
     <meta name="author" content="Mihal Dimo">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mhdimo.github.io/">
@@ -12,8 +12,8 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Mihal Dimo">
-    <meta property="og:title" content="Mihal Dimo — Software Engineer, Low-Latency &amp; Embedded Systems">
-    <meta property="og:description" content="Software engineer building low-latency embedded systems. Amazon Music ML intern, Zellia Hall Effect technical lead at KBDfans.">
+    <meta property="og:title" content="Mihal Dimo — Software Engineer">
+    <meta property="og:description" content="Software engineer — LLM inference systems and embedded firmware. vLLM contributor, Amazon Music ML intern, Zellia Hall Effect technical lead at KBDfans.">
     <meta property="og:url" content="https://mhdimo.github.io/">
     <meta property="og:image" content="https://mhdimo.github.io/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -22,36 +22,31 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mihal Dimo — Software Engineer, Low-Latency &amp; Embedded Systems">
-    <meta name="twitter:description" content="Software engineer building low-latency embedded systems. Amazon Music ML intern, Zellia Hall Effect technical lead at KBDfans.">
+    <meta name="twitter:title" content="Mihal Dimo — Software Engineer">
+    <meta name="twitter:description" content="Software engineer — LLM inference systems and embedded firmware. vLLM contributor, Amazon Music ML intern, Zellia Hall Effect technical lead at KBDfans.">
     <meta name="twitter:image" content="https://mhdimo.github.io/og-image.png">
 
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#060606" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=Martian+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: 'Hanken Grotesk', system-ui, sans-serif;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        /* Hide scrollbar but keep functionality */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
     </style>
+    <script>
+        // Resolve the saved theme before first paint so a light-mode
+        // visitor never flashes the dark panel. Default stays dark.
+        try {
+            if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.remove('dark');
+            }
+        } catch (e) {}
+    </script>
 
     <!-- Structured data: agents parse this without executing JavaScript -->
     <script type="application/ld+json">
@@ -65,7 +60,7 @@
       "image": "https://github.com/mhdimo.png",
       "email": "mailto:mihal@kakao.com",
       "jobTitle": "Software Engineer",
-      "description": "Software engineer working across AI systems and embedded hardware — from speculative decoding in the vLLM Apple Silicon backend to Hall-effect keyboard firmware. Open-source contributor to vLLM, ML engineering intern at Amazon, former firmware lead for the Zellia Hall Effect keyboard project at KBDfans.",
+      "description": "Software engineer — LLM inference systems and embedded firmware. Open-source contributor to vLLM, ML engineering intern at Amazon, former firmware lead for the Zellia Hall Effect keyboard project at KBDfans.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Berlin",
@@ -118,7 +113,7 @@
       "@id": "https://mhdimo.github.io/#website",
       "url": "https://mhdimo.github.io/",
       "name": "Mihal Dimo",
-      "description": "Personal site of Mihal Dimo — software engineer working across AI systems and embedded hardware. Resume, projects, and writing.",
+      "description": "Personal site of Mihal Dimo — software engineer. LLM inference systems and embedded firmware. Resume, projects, and writing.",
       "inLanguage": "en",
       "publisher": { "@id": "https://mhdimo.github.io/#person" }
     }
@@ -153,7 +148,7 @@
     }
     </script>
 </head>
-<body class="bg-white text-black dark:bg-black dark:text-white antialiased">
+<body class="bg-ground text-fg antialiased">
     <div id="root"></div>
     <noscript>
         <p>Mihal Dimo — Software Engineer, Low-Latency &amp; Embedded Systems.</p>

@@ -2,24 +2,34 @@
 import React, { useState, useEffect } from 'react';
 
 const ThemeSwitcher: React.FC = () => {
-  // Initializing with true for black theme as default
-  const [isDark, setIsDark] = useState(true);
+  // null = not yet read from storage; the class on <html> is already
+  // correct before hydration (set by the inline script in index.html).
+  const [isDark, setIsDark] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    if (isDark) {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch {}
+    setIsDark(stored !== 'light');
+  }, []);
+
+  useEffect(() => {
+    if (isDark === null) return;
+    document.documentElement.classList.toggle('dark', isDark);
+    try {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch {}
   }, [isDark]);
 
   return (
     <button
-      onClick={() => setIsDark(!isDark)}
-      className="p-2 border border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 rounded-md text-xs uppercase tracking-widest font-bold"
+      onClick={() => setIsDark(isDark === false)}
+      aria-label="Switch color theme"
+      suppressHydrationWarning
+      className="text-[11px] font-mono uppercase tracking-[0.2em] px-3.5 py-2 border border-line hover:border-fg text-muted hover:text-fg transition-colors duration-200 rounded-[3px]"
     >
-      {isDark ? 'Light' : 'Dark'}
+      {isDark === false ? 'Dark' : 'Light'}
     </button>
   );
 };

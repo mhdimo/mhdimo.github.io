@@ -2,6 +2,12 @@
 import React from 'react';
 import ThemeSwitcher from './ThemeSwitcher';
 
+const NAV_LINKS = [
+  { label: 'Home', id: 'home' },
+  { label: 'Experience', id: 'work' },
+  { label: 'Projects', id: 'projects' },
+];
+
 const Navbar: React.FC = () => {
   const handleDownloadCV = () => {
     const link = document.createElement('a');
@@ -15,7 +21,7 @@ const Navbar: React.FC = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 120;
+      const offset = 104;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -29,29 +35,36 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-black/90 backdrop-blur-lg border-b border-black/5 dark:border-white/5 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
-        <div className="hidden lg:flex lg:w-80 justify-center">
-          <span className="text-3xl font-black tracking-tighter uppercase leading-none cursor-default">
-            Mihal <span className="opacity-40 font-light">Dimo</span>
-          </span>
+    <nav className="fixed top-0 left-0 w-full z-50 bg-ground/90 backdrop-blur-lg border-b border-line transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-6">
+        <button
+          onClick={() => scrollToSection('home')}
+          aria-label="Back to top"
+          className="font-display font-bold uppercase tracking-[0.08em] text-base leading-none cursor-default"
+        >
+          Mihal&nbsp;<span className="opacity-40">Dimo</span>
+        </button>
+
+        {/* Section links only where they fit — on phones the page scrolls
+            and the brand button returns to the top. */}
+        <div className="hidden lg:flex items-center space-x-5 md:space-x-8">
+          {NAV_LINKS.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted hover:text-fg transition-colors duration-200"
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
-        <div className="lg:hidden">
-           <span className="text-2xl font-black tracking-tighter uppercase leading-none cursor-default">
-            Mihal <span className="opacity-40 font-light">Dimo</span>
-          </span>
-        </div>
-
-        <div className="flex items-center space-x-6 md:space-x-10">
-          <button onClick={() => scrollToSection('home')} className="text-xs uppercase tracking-[0.25em] font-bold opacity-60 hover:opacity-100 transition-opacity">Home</button>
-          <button onClick={() => scrollToSection('work')} className="text-xs uppercase tracking-[0.25em] font-bold opacity-60 hover:opacity-100 transition-opacity">Experience</button>
-          <button onClick={() => scrollToSection('projects')} className="text-xs uppercase tracking-[0.25em] font-bold opacity-60 hover:opacity-100 transition-opacity">Projects</button>
-          <button 
-            onClick={handleDownloadCV} 
-            className="text-[10px] uppercase tracking-[0.25em] font-bold px-4 py-2 border-2 border-black/10 dark:border-white/10 rounded-lg hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+        <div className="flex items-center space-x-2.5">
+          <button
+            onClick={handleDownloadCV}
+            className="font-mono text-[11px] uppercase tracking-[0.2em] px-3.5 py-2 border border-line hover:border-fg text-fg hover:bg-fg hover:text-ground transition-colors duration-200 rounded-[3px]"
           >
-            CV
+            Resume
           </button>
           <ThemeSwitcher />
         </div>

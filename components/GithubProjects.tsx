@@ -48,13 +48,13 @@ const GithubProjects: React.FC = () => {
   // Only show loading/error states when there is no static fallback content.
   if (loading && repos.length === 0) return (
     <div className="py-16 animate-pulse">
-      <p className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">Loading Repository Buffer...</p>
+      <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted">Loading repositories…</p>
     </div>
   );
 
   if (error && repos.length === 0) return (
-    <div className="py-16 text-red-500">
-      <p className="text-xs uppercase tracking-[0.3em] font-bold">Error: {error}</p>
+    <div className="py-16 text-accent">
+      <p className="font-mono text-[11px] uppercase tracking-[0.25em]">Error: {error}</p>
     </div>
   );
 
@@ -62,24 +62,30 @@ const GithubProjects: React.FC = () => {
   const sorted = [...repos].sort((a, b) => b.stargazers_count - a.stargazers_count);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
       {sorted.map((repo) => (
         <a
           key={repo.id}
           href={repo.html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="block bg-white dark:bg-black p-10 group border border-black/5 dark:border-white/5 rounded-2xl hover:bg-neutral-50 dark:hover:bg-neutral-900/50 transition-all duration-300 transform hover:-translate-y-1"
+          className="group flex flex-col border border-line hover:border-accentline rounded-[4px] p-7 md:p-8 transition-all duration-200 transform hover:-translate-y-0.5"
         >
-          <div className="flex justify-between items-start mb-5">
-            <h3 className="text-xl font-bold tracking-tight truncate pr-4">{repo.name}</h3>
-            <span className="text-xs font-bold opacity-30">★ {repo.stargazers_count}</span>
+          <div className="flex justify-between items-start gap-4 mb-4">
+            <h3 className="font-mono font-bold tracking-tight text-base truncate">
+              {repo.name}
+              <span aria-hidden="true" className="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200"> ↗</span>
+            </h3>
           </div>
-          <p className="text-base mb-10 h-12 overflow-hidden line-clamp-2 opacity-60 font-normal leading-relaxed">
+          <p className="text-[15px] leading-relaxed opacity-70 line-clamp-3 flex-1">
             {repo.description || "System architecture repository."}
           </p>
-          <div className="flex justify-end items-center text-[10px] uppercase tracking-widest font-black">
-            <span className="group-hover:translate-x-2 transition-transform">Details →</span>
+          <div className="mt-6 flex justify-between items-center font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            <span className="flex items-center gap-2">
+              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-current opacity-60" />
+              {repo.language}
+            </span>
+            <span>★ {repo.stargazers_count}</span>
           </div>
         </a>
       ))}
