@@ -14,7 +14,7 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 ## Core facts
 - Name: Mihal Dimo
 - Role: Software Engineer (AI Systems / Embedded Systems / Low-Latency Systems)
-- Location: Berlin, Germany
+- Location: Italy
 - Email: mihal@kakao.com
 - Status: Open to opportunities
 - GitHub: https://github.com/mhdimo
@@ -49,10 +49,10 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 Personal site of Mihal Dimo, software engineer. Hero: "Mihal Dimo — Software Engineer". Sections: Technical Skills (Languages, ML Systems, LLM Tooling, Systems & Data, Embedded & Web), Projects (vllm-metal, ai-sdk-cpp, Zellia80-HE, deepseek-code, ordered by stars — GitHub data loaded live), Work Experience (vLLM Project, Amazon, KBDfans), Education (University of Catania, Brandenburg Technical University), and footer links to About, Contact, Privacy.
 
 ### About (https://mhdimo.github.io/about/)
-Longer-form bio: works on LLM inference systems and embedded firmware — currently contributing to the vLLM project, previously at Amazon (Amazon Music ML intern) and KBDfans (Zellia Hall Effect keyboard firmware lead). Based in Berlin, Germany.
+Longer-form bio: works on LLM inference systems and embedded firmware — currently contributing to the vLLM project, previously at Amazon (Amazon Music ML intern) and KBDfans (Zellia Hall Effect keyboard firmware lead). Based in Italy.
 
 ### Contact (https://mhdimo.github.io/contact/)
-Contact via email: mihal@kakao.com. Location: Berlin, Germany. No phone number is published. Other profiles: GitHub (github.com/mhdimo), LinkedIn (linkedin.com/in/mihaldimo/), X (x.com/mihaldimo).
+Contact via email: mihal@kakao.com. Location: Italy. No phone number is published. Other profiles: GitHub (github.com/mhdimo), LinkedIn (linkedin.com/in/mihaldimo/), X (x.com/mihaldimo).
 
 ### Privacy (https://mhdimo.github.io/privacy/)
 The site runs no analytics, sets no cookies, and collects no personal data. Static hosting via GitHub Pages; server logs are handled by GitHub per their privacy policy. Contact: mihal@kakao.com.

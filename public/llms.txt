@@ -14,7 +14,7 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 ## Core facts
 - Name: Mihal Dimo
 - Role: Software Engineer (LLM Inference / Embedded Firmware)
-- Location: Berlin, Germany
+- Location: Italy
 - Email: mihal@kakao.com
 - Status: Open to opportunities
 - GitHub: https://github.com/mhdimo

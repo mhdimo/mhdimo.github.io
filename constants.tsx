@@ -6,7 +6,7 @@ export const PROFILE_IMAGE_URL = 'https://github.com/mhdimo.png';
 
 export const CONTACT_INFO = {
   email: 'mihal@kakao.com',
-  location: 'Berlin, Germany',
+  location: 'Italy',
 };
 
 // Featured repositories (full name: owner/repo), in display order.

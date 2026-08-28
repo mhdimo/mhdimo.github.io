@@ -2,7 +2,7 @@
 
 Markdown mirror of https://mhdimo.github.io/about/ — the HTML page is canonical.
 
-I work on LLM inference systems and embedded firmware — currently contributing to the vLLM project, previously at Amazon and KBDfans. I am based in Berlin, Germany.
+I work on LLM inference systems and embedded firmware — currently contributing to the vLLM project, previously at Amazon and KBDfans. I am based in Italy.
 
 ## Current work
 

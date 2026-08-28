@@ -1,6 +1,6 @@
 # Mihal Dimo — Software Engineer
 
-I work on LLM inference systems and embedded firmware — currently contributing to the vLLM project, previously at Amazon and KBDfans. Based in Berlin, Germany.
+I work on LLM inference systems and embedded firmware — currently contributing to the vLLM project, previously at Amazon and KBDfans. Based in Italy.
 
 Markdown mirror of https://mhdimo.github.io/ — the HTML page is canonical. Agent guide: [/llms.txt](https://mhdimo.github.io/llms.txt).
 

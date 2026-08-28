@@ -118,7 +118,7 @@ check('Person has contactPoint + email', !!person?.contactPoint?.email && !!pers
 // associate the profile name with this domain (brand-name discoverability).
 check('Person has alternateName mhdimo', person?.alternateName === 'mhdimo');
 check('Person has knowsAbout topics', Array.isArray(person?.knowsAbout) && person.knowsAbout.length >= 3);
-check('Person has address', person?.address?.addressLocality === 'Berlin');
+check('Person has address', person?.address?.addressLocality === 'Italy');
 check('Person has sameAs', Array.isArray(person?.sameAs) && person.sameAs.length >= 3);
 const organization = ldBlocks.find(b => b['@type'] === 'Organization');
 check('Organization has contactPoint + email', !!organization?.contactPoint?.email && !!organization?.contactPoint?.contactType);

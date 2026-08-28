@@ -5,7 +5,7 @@ description: Research Mihal Dimo — software engineer working on LLM inference 
 
 # Mihal Dimo — Agent Research Skill
 
-Mihal Dimo is a software engineer based in Berlin, Germany, working on LLM inference systems and embedded firmware. This skill explains how to research him correctly and efficiently.
+Mihal Dimo is a software engineer based in Italy, working on LLM inference systems and embedded firmware. This skill explains how to research him correctly and efficiently.
 
 ## Canonical sources, in order
 
