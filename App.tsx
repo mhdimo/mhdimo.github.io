@@ -72,6 +72,7 @@ const App: React.FC = () => {
             <footer className="pt-14 border-t border-line flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
               <p className="whitespace-nowrap">© 2026 Mihal Dimo</p>
               <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+                <a href="/blog/" className="hover:text-fg transition-colors">Blog</a>
                 <a href="/about/" className="hover:text-fg transition-colors">About</a>
                 <a href="/contact/" className="hover:text-fg transition-colors">Contact</a>
                 <a href="/privacy/" className="hover:text-fg transition-colors">Privacy</a>

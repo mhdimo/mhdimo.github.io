@@ -5,6 +5,7 @@ I work on LLM inference systems and embedded firmware — currently contributing
 Markdown mirror of https://mhdimo.github.io/ — the HTML page is canonical. Agent guide: [/llms.txt](https://mhdimo.github.io/llms.txt).
 
 - Email: mihal@kakao.com (email only; no phone number is published)
+- Blog / Writing: https://mhdimo.github.io/blog/
 - GitHub: https://github.com/mhdimo
 - LinkedIn: https://linkedin.com/in/mihaldimo/
 - X: https://x.com/mihaldimo

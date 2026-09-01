@@ -167,6 +167,14 @@ for (const page of ['about', 'contact', 'privacy']) {
 const aboutPage = JSON.parse(read('about/index.html').match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
 check('about/ Person mainEntity has sameAs + alternateName', aboutPage?.mainEntity?.alternateName === 'mhdimo' && Array.isArray(aboutPage?.mainEntity?.sameAs) && aboutPage.mainEntity.sameAs.length >= 3);
 
+// --- blog & writing (content pipeline) ---
+check('homepage links to blog', html.includes('href="/blog/"'), 'nav & footer links present');
+check('blog index exists with content', existsSync(resolve(DIST, 'blog/index.html')) && visibleText(read('blog/index.html')).length >= 200, 'standalone blog index');
+check('starter blog post exists', existsSync(resolve(DIST, 'blog/2026-08-31-notes-on-systems/index.html')), 'article page generated');
+const postHtml = existsSync(resolve(DIST, 'blog/2026-08-31-notes-on-systems/index.html')) ? read('blog/2026-08-31-notes-on-systems/index.html') : '';
+check('starter post has Article JSON-LD', postHtml.includes('"@type": "Article"') && postHtml.includes('Speculative Decoding'), 'post metadata');
+check('sitemap includes blog index and starter post', locs.some(l => l.endsWith('/blog/')) && locs.some(l => l.includes('/blog/2026-08-31-notes-on-systems/')), 'blog in sitemap');
+
 // --- well-known agent skill (agentskills.io discovery 0.2.0) ---
 const skillIndex = JSON.parse(read('.well-known/agent-skills/index.json'));
 check('agent-skills index uses discovery schema', skillIndex['$schema'] === 'https://schemas.agentskills.io/discovery/0.2.0/schema.json');

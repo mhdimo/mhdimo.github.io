@@ -1,4 +1,3 @@
-
 {
   "name": "monochrome-portfolio",
   "private": true,
@@ -6,11 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && bun scripts/prerender.tsx",
+    "build": "tsc && vite build && bun scripts/prerender.tsx && bun scripts/build-blog.mjs",
+    "test": "node --test scripts/blog.test.mjs scripts/blog-build.test.mjs",
     "test:agentic": "bun scripts/verify-agentic.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
+    "highlight.js": "^11.12.0",
+    "marked": "^15.0.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

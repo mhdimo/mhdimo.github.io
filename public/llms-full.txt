@@ -54,6 +54,9 @@ Longer-form bio: works on LLM inference systems and embedded firmware — curren
 ### Contact (https://mhdimo.github.io/contact/)
 Contact via email: mihal@kakao.com. Location: Italy. No phone number is published. Other profiles: GitHub (github.com/mhdimo), LinkedIn (linkedin.com/in/mihaldimo/), X (x.com/mihaldimo).
 
+### Writing / Blog (https://mhdimo.github.io/blog/)
+First-party technical blog covering LLM inference systems, speculative decoding, kernel optimization, and embedded engineering. Served as static HTML authored in Markdown.
+
 ### Privacy (https://mhdimo.github.io/privacy/)
 The site runs no analytics, sets no cookies, and collects no personal data. Static hosting via GitHub Pages; server logs are handled by GitHub per their privacy policy. Contact: mihal@kakao.com.
 

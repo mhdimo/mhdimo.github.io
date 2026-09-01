@@ -45,6 +45,7 @@ This site is a personal portfolio, not a product. There is no API, no OAuth, no 
 
 ## Pages
 - Home / resume: https://mhdimo.github.io/
+- Writing / Blog: https://mhdimo.github.io/blog/
 - About: https://mhdimo.github.io/about/
 - Contact: https://mhdimo.github.io/contact/
 - Privacy: https://mhdimo.github.io/privacy/

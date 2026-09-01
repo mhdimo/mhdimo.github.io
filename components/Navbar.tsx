@@ -57,6 +57,12 @@ const Navbar: React.FC = () => {
               {label}
             </button>
           ))}
+          <a
+            href="/blog/"
+            className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted hover:text-fg transition-colors duration-200"
+          >
+            Blog
+          </a>
         </div>
 
         <div className="flex items-center space-x-2.5">
