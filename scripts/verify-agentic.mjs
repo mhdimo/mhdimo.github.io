@@ -43,10 +43,12 @@ const html = read('index.html');
 const text = visibleText(html);
 check('raw HTML has exactly one <h1>', (html.match(/<h1/g) || []).length === 1, `count=${(html.match(/<h1/g) || []).length}`);
 check('raw HTML has 500+ chars of text', text.length >= 500, `chars=${text.length}`);
-const FEATURED = ['ai-sdk-cpp', 'deepseek-code', 'vllm-metal', 'Zellia80-HE'];
-check('raw HTML shows all 4 featured projects', FEATURED.every(name => html.includes(name)), `missing=${FEATURED.filter(n => !html.includes(n)).join(',') || 'none'}`);
-// Star-descending fallback order: vllm-metal 1631 > ai-sdk-cpp 31 > Zellia80-HE 24 > deepseek-code 5
-const STAR_ORDER = ['vllm-metal', 'ai-sdk-cpp', 'Zellia80-HE', 'deepseek-code'];
+const FEATURED = ['ai-sdk-cpp', 'deepseek-code', 'vllm-metal', 'Zellia80-HE', 'qwen38-h100-lab', 'inference-engine'];
+check('raw HTML shows all 6 featured projects', FEATURED.every(name => html.includes(name)), `missing=${FEATURED.filter(n => !html.includes(n)).join(',') || 'none'}`);
+// Star-descending fallback order: vllm-metal 1823 > ai-sdk-cpp 47 > Zellia80-HE 24 >
+// deepseek-code 7 > qwen38-h100-lab 0 = inference-engine 0 (the two zero-star repos
+// tie; REPO_FALLBACKS array order breaks the tie, and Array#sort is stable).
+const STAR_ORDER = ['vllm-metal', 'ai-sdk-cpp', 'Zellia80-HE', 'deepseek-code', 'qwen38-h100-lab', 'inference-engine'];
 const orderIdx = STAR_ORDER.map(n => html.indexOf(n));
 const starOrder = orderIdx.every((v, i) => v >= 0 && (i === 0 || v > orderIdx[i - 1]));
 check('projects ordered by stars (SSR order)', starOrder, `order=${STAR_ORDER.map((n, i) => `${n}@${orderIdx[i]}`).join(' ')}`);
@@ -170,10 +172,11 @@ check('about/ Person mainEntity has sameAs + alternateName', aboutPage?.mainEnti
 // --- blog & writing (content pipeline) ---
 check('homepage links to blog', html.includes('href="/blog/"'), 'nav & footer links present');
 check('blog index exists with content', existsSync(resolve(DIST, 'blog/index.html')) && visibleText(read('blog/index.html')).length >= 200, 'standalone blog index');
-check('starter blog post exists', existsSync(resolve(DIST, 'blog/2026-08-31-notes-on-systems/index.html')), 'article page generated');
-const postHtml = existsSync(resolve(DIST, 'blog/2026-08-31-notes-on-systems/index.html')) ? read('blog/2026-08-31-notes-on-systems/index.html') : '';
-check('starter post has Article JSON-LD', postHtml.includes('"@type": "Article"') && postHtml.includes('Speculative Decoding'), 'post metadata');
-check('sitemap includes blog index and starter post', locs.some(l => l.endsWith('/blog/')) && locs.some(l => l.includes('/blog/2026-08-31-notes-on-systems/')), 'blog in sitemap');
+const POST_SLUG = '2026-09-07-notes';
+check('blog post exists', existsSync(resolve(DIST, `blog/${POST_SLUG}/index.html`)), 'article page generated');
+const postHtml = existsSync(resolve(DIST, `blog/${POST_SLUG}/index.html`)) ? read(`blog/${POST_SLUG}/index.html`) : '';
+check('blog post has Article JSON-LD', postHtml.includes('"@type": "Article"') && postHtml.includes('Amazon Music'), 'post metadata');
+check('sitemap includes blog index and post', locs.some(l => l.endsWith('/blog/')) && locs.some(l => l.includes(`/blog/${POST_SLUG}/`)), 'blog in sitemap');
 
 // --- well-known agent skill (agentskills.io discovery 0.2.0) ---
 const skillIndex = JSON.parse(read('.well-known/agent-skills/index.json'));
