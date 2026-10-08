@@ -62,7 +62,7 @@ export const REPO_FALLBACKS: GithubRepo[] = [
   {
     id: 4,
     name: 'qwen38-h100-lab',
-    description: 'Single-H100 study of Qwen3.8-27B-FP8 inference — a byte-exact SM90 SiLU-FP8 CUDA kernel fused with gating and per-group E4M3 quantization: 2.26× kernel speedup at 16K rows, +5.90% prefill throughput vs. tuned vLLM.',
+    description: 'Single-H100 study of Qwen3.8-27B-FP8 inference — a byte-exact SM90 SiLU-FP8 CUDA kernel fused with gating and per-group E4M3 quantization, verified across 168 reference comparisons: 2.26× kernel speedup at the 16K-row shape, +5.90% prefill and +3.65% mixed throughput vs. tuned vLLM.',
     html_url: `https://github.com/${GITHUB_USERNAME}/qwen38-h100-lab`,
     stargazers_count: 0,
     language: 'Python',
@@ -71,7 +71,7 @@ export const REPO_FALLBACKS: GithubRepo[] = [
   {
     id: 5,
     name: 'inference-engine',
-    description: 'From-scratch C++20 LLM inference engine for Apple Silicon — tensor runtime, compute graphs with lifetime-based memory planning, GGUF loading, KV caching, and 13 custom Metal kernels for end-to-end Qwen2.5 and SmolLM2.',
+    description: 'From-scratch C++20 LLM inference engine for Apple Silicon — tensor runtime, compute graphs with lifetime-based memory planning, GGUF loading, KV caching, and 13 custom Metal kernels (tiled and quantized GEMM, RoPE, GQA attention, RMSNorm, SwiGLU) for end-to-end Qwen2.5 and SmolLM2.',
     html_url: `https://github.com/${GITHUB_USERNAME}/inference-engine`,
     stargazers_count: 0,
     language: 'C++',
@@ -132,7 +132,7 @@ export const WORK_DATA: ExperienceItem[] = [
     organization: "vLLM Project",
     location: "Open Source",
     period: "Jul 2026 - Present",
-    description: "Contributed to 20+ merged PRs in the vLLM Metal backend, spanning speculative decoding, paged KV-cache management, model compatibility, sampling, and memory management for Apple Silicon inference.\nImplemented DSpark speculative decoding for the vLLM Metal backend, including Qwen3 model integration, scheduler-owned KV-cache management, page execution, Markov drafting, prefix caching, validation, and serving benchmarks.\nOptimized speculative decoding by eliminating redundant KV re-ingestion and chunking cold draft-KV ingestion: 31× faster 8K first-propose latency (3.47s → 112ms), 2.1× end-to-end latency (64.0 → 30.8 ms/token), 50% less steady-state KV ingestion, and 48% lower DSpark draft-weight memory (4.42 → 2.29 GiB).",
+    description: "Contributed to 20+ merged PRs in the vLLM Metal backend, spanning speculative decoding, paged KV-cache management, model compatibility, sampling, and memory management for Apple Silicon inference.\nImplemented DSpark speculative decoding for the vLLM Metal backend, including Qwen3 model integration, scheduler-owned KV-cache management, paged execution, Markov drafting, prefix caching, validation, and serving benchmarks.\nOptimized speculative decoding by eliminating redundant KV re-ingestion and chunking cold draft-KV ingestion: 31× faster 8K first-propose latency (3.47s → 112ms), 2.1× end-to-end latency (64.0 → 30.8 ms/token), 50% less steady-state KV ingestion, and 48% lower DSpark draft-weight memory (4.42 → 2.29 GiB).",
     logo: 'https://avatars.githubusercontent.com/u/136984999?v=4',
     logoTile: 'white',
   },
@@ -148,7 +148,7 @@ export const WORK_DATA: ExperienceItem[] = [
   {
     position: "Firmware Lead & Embedded Software Engineer",
     organization: "KBDfans (Partner)",
-    location: "Changzhou, China",
+    location: "Changzhou, Jiangsu, China",
     period: "Mar 2024 - Dec 2025",
     description: "Led firmware and hardware development for the Zellia Hall Effect project (team of five C/C++ engineers): a distributed embedded system across five AT32 MCUs with enhanced modularity and multi-layout keyboard support, designed in KiCad 8.0.\nAchieved <0.28 ms input latency at a 106 kHz scan rate by decoupling signal acquisition and processing, with a custom 7.5 Mbps UART protocol for high-throughput multi-MCU synchronization.\nOffloaded ADC normalization and calibration to slave MCUs, reducing master CPU load by 90%.",
     logo: '/images/kbdfans-logo.png',

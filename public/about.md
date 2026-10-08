@@ -6,7 +6,7 @@ I work on LLM inference systems and embedded firmware — currently contributing
 
 ## Current work
 
-Since July 2026 I have been an open-source contributor to the vLLM project, with 20+ merged PRs in the vLLM Metal backend spanning speculative decoding, paged KV-cache management, model compatibility, sampling, and memory management for Apple Silicon inference. I implemented DSpark speculative decoding — Qwen3 model integration, scheduler-owned KV-cache management, page execution, Markov drafting, prefix caching, validation, and serving benchmarks — and optimized it by eliminating redundant KV re-ingestion and chunking cold draft-KV ingestion. That work reduced 8K first-propose latency by 31× (3.47 s to 112 ms), end-to-end latency by 2.1× (64.0 to 30.8 ms per token), steady-state KV ingestion by 50%, and DSpark draft-weight memory by 48% (4.42 to 2.29 GiB).
+Since July 2026 I have been an open-source contributor to the vLLM project, with 20+ merged PRs in the vLLM Metal backend spanning speculative decoding, paged KV-cache management, model compatibility, sampling, and memory management for Apple Silicon inference. I implemented DSpark speculative decoding — Qwen3 model integration, scheduler-owned KV-cache management, paged execution, Markov drafting, prefix caching, validation, and serving benchmarks — and optimized it by eliminating redundant KV re-ingestion and chunking cold draft-KV ingestion. That work reduced 8K first-propose latency by 31× (3.47 s to 112 ms), end-to-end latency by 2.1× (64.0 to 30.8 ms per token), steady-state KV ingestion by 50%, and DSpark draft-weight memory by 48% (4.42 to 2.29 GiB).
 
 ## Experience highlights
 
